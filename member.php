@@ -1,12 +1,13 @@
 <?php
 	$CWD = ".";
-	require_once( "php/reload.php" );
+	require_once "php/reload.php";
+	require_once "php/sqlite.php";
 	require_once "pages/builders/Builder.php";
 	require_once "pages/builders/header.builder.php";
 	require_once "pages/builders/bottom.builder.php";
 	require_once "pages/builders/messagebox.builder.php";
-	
-	$loggedIn = filter_input( INPUT_SESSION, "loggedIn" );
+
+	$loggedIn = ( empty( $_SESSION["loggedIn"] ) ? FALSE : $_SESSION["loggedIn"] );
 	if ($loggedIn === FALSE || $loggedIn === null ) {
 		header("Location: login.php");
 	}

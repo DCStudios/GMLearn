@@ -1,6 +1,6 @@
 {
   "exclude": [
-    "^(node_modules|bower_components|\\.imdone|target|build|dist|logs)[\\/\\\\]?|\\.(git|svn|hg|npmignore)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+    "^(node_modules|nbproject|bower_components|\\.imdone|target|build|dist|logs)[\\/\\\\]?|\\.(git|svn|hg|npmignore|sass|phpintel)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
   ],
   "watcher": true,
   "code": {
@@ -20,10 +20,6 @@
     ]
   },
   "lists": [
-    {
-      "name": "NOTE",
-      "hidden": true
-    },
     {
       "name": "TODO",
       "hidden": false

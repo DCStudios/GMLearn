@@ -1,15 +1,22 @@
 <?php
 	$CWD = ".";
-	require_once( "php/sqlite.php" );
-	require_once( "php/reload.php" );
+	require_once "php/sqlite.php";
+	require_once "php/reload.php";
 	require_once "pages/builders/Builder.php";
 	require_once "pages/builders/header.builder.php";
 	require_once "pages/builders/bottom.builder.php";
 
+	// Check if already logged in
+	$loggedIn = ( empty( $_SESSION["loggedIn"] ) ? FALSE : $_SESSION["loggedIn"] );
+	if( $loggedIn !== FALSE && $loggedIn !== null ) {
+		header( "Location: member.php" );
+	}
+
+	// Check if trying to login
 	$username = filter_input( INPUT_POST, "username" );
 	$password = filter_input( INPUT_POST, "password" );
 	$row = null;
-	
+
 	if( $username && $password ) {
 
 		$statement = $sql -> prepare( "SELECT username,email FROM users WHERE username = :user AND password = :pass" );
@@ -25,19 +32,20 @@
 			$_SESSION["user"] = $row["username"];
 			$_SESSION["email"] = $row["email"];
 			$_SESSION["loggedIn"] = true;
-			
+
 			header( "Location: member.php" );
 		}
 	}
-	
+
+	// Check if we should use auto-fill username
 	$user = filter_input( INPUT_GET, "user" );
-	
+
 	$builder -> buildHeader( "Membership - Login" );
 ?>
 			<div id="anim-wrapper" class="transition animfadeInRight">
 
 				<?php echo "<!--"; print_r( $row ); echo "-->"; ?>
-				
+
 				<form id="login" action="login.php" method="POST">
 
 					<!-- Fake fields to disable autofill in chromium -->
