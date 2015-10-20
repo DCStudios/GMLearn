@@ -10,19 +10,19 @@
 	$username = filter_input( INPUT_POST, "username" );
 	$password = filter_input( INPUT_POST, "password" );
 	$email = filter_input( INPUT_POST, "email" );
-	
+
 	$messageTitle = "";
 	$messageContent = "";
 	$messageButtonText = "";
 	$messageButtonLink = "";
-	
-	if( $username && $password && $email ) {
+
+	if( $username !== NULL && $password !== NULL && $email !== NULL ) {
 		$statement = $sql->prepare( "INSERT INTO users(username,password,email) VALUES(:user,:pass,:email);" );
 		$statement -> bindValue( ":user", $username );
 		$statement -> bindValue( ":pass", sha1( $sqlSalt . $password ) );
 		$statement -> bindValue( ":email", $email );
-		$result = $statement -> execute() or die( "TEST" );
-		
+		$result = $statement -> execute();
+
 		if( $result === FALSE ) {
 			$messageTitle = "Error";
 			$messageContent = "Something went wrong during your account creation.<br>Please try again later.";
@@ -42,7 +42,7 @@
 		$messageButtonText = "Go back";
 		$messageButtonLink = "register.php?user=$username&email=$email";
 	}
-	
+
 	$builder -> buildHeader( "Membership - Regisster" );
 	$builder -> buildMessagebox( $messageTitle, $messageContent, [
 		$messageButtonText => [ "type"=>"link", "link"=>$messageButtonLink, "class"=>"primary" ]

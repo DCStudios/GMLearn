@@ -7,32 +7,30 @@
 	require_once "pages/builders/bottom.builder.php";
 
 	// Check if already logged in
-	$loggedIn = ( empty( $_SESSION["loggedIn"] ) ? FALSE : $_SESSION["loggedIn"] );
-	if( $loggedIn !== FALSE && $loggedIn !== null ) {
+	$loggedIn = isset( $_SESSION["loggedIn"] );
+	if( $loggedIn ) {
 		header( "Location: member.php" );
 	}
 
 	// Check if trying to login
 	$username = filter_input( INPUT_POST, "username" );
 	$password = filter_input( INPUT_POST, "password" );
-	$row = null;
+	$rem = "";
 
-	if( $username && $password ) {
+	if( $username !== NULL && $password !== NULL ) {
 
 		$statement = $sql -> prepare( "SELECT username,email FROM users WHERE username = :user AND password = :pass" );
 		$statement -> bindValue( ":user", $username );
 		$statement -> bindValue( ":pass", sha1( $sqlSalt . $password ) );
-		$result = $statement -> execute();
+		$result = $statement -> execute() -> fetchArray( SQLITE3_ASSOC );
 
-		if( $result === FALSE ) {
+		if( $result === FALSE || $result === null ) {
 			header( "Location: login_error.php" );
 		}
 		else {
-			$row = $result -> fetchArray( SQLITE3_ASSOC );
-			$_SESSION["user"] = $row["username"];
-			$_SESSION["email"] = $row["email"];
+			$_SESSION["user"] = $result["username"];
+			$_SESSION["email"] = $result["email"];
 			$_SESSION["loggedIn"] = true;
-
 			header( "Location: member.php" );
 		}
 	}
@@ -43,8 +41,6 @@
 	$builder -> buildHeader( "Membership - Login" );
 ?>
 			<div id="anim-wrapper" class="transition animfadeInRight">
-
-				<?php echo "<!--"; print_r( $row ); echo "-->"; ?>
 
 				<form id="login" action="login.php" method="POST">
 

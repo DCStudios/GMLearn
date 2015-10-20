@@ -10,9 +10,7 @@
 	require_once( "php/sqlite.php" );
 	require_once( "php/reload.php" );
 
-	$loggedIn = ( empty( $_SESSION["loggedIn"] ) ? FALSE : $_SESSION["loggedIn"] );
-
-	if( $loggedIn !== FALSE && $loggedIn !== null ) {
+	if( isset( $_SESSION["loggedIn"] ) ) {
 		header( "Location: member.php" );
 	}
 	else {
