@@ -1,8 +1,9 @@
 <?php
 
-	// #COMPLETED:0 Create user system
+	// #COMPLETED:10 Create user system
+	// #COMPLETED:0 Add Member page
 	// #TODO:0 Add Project system
-	// #COMPLETED:10 Incorporate JsLibs
+	// #COMPLETED:20 Incorporate JsLibs
 	// #DOING:0 Make Admin Account
 	// #DOING:10 Make Admin page
 

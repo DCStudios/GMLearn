@@ -12,10 +12,48 @@
 		header("Location: login.php");
 	}
 
+	/**
+	 * Get either a Gravatar URL or complete image tag for a specified email address.
+	 *
+	 * @param string $email The email address
+	 * @param string $s Size in pixels, defaults to 80px [ 1 - 2048 ]
+	 * @param string $d Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
+	 * @param string $r Maximum rating (inclusive) [ g | pg | r | x ]
+	 * @param boole $img True to return a complete IMG tag False for just the URL
+	 * @param array $atts Optional, additional key/value attributes to include in the IMG tag
+	 * @return String containing either just a URL or a complete image tag
+	 * @source http://gravatar.com/site/implement/images/php/
+	 */
+	function get_gravatar( $email, $s = 80, $d = 'mm', $r = 'g', $img = false, $atts = array() ) {
+	    $url = 'http://www.gravatar.com/avatar/';
+	    $url .= md5( strtolower( trim( $email ) ) );
+	    $url .= "?s=$s&d=$d&r=$r";
+	    if ( $img ) {
+	        $url = '<img src="' . $url . '"';
+	        foreach ( $atts as $key => $val )
+	            $url .= ' ' . $key . '="' . $val . '"';
+	        $url .= ' />';
+	    }
+	    return $url;
+	}
+
 	$builder->buildHeader( "Membership - Member" );
-	$builder->buildMessagebox(
-		"Member",
-		"You have now logged in!<br>Nothing to display though...",
-		array()
-	);
+?>
+
+<div id="userpanel" class="transition animFadeInRightAlt">
+	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>
+	<span class="username"><?php echo $_SESSION["user"];?></span>
+	<span class="usergroup">member</span>
+	<ul class="panelitemgroup">
+		<li class="panelitem"><a href="#"><span class='itemname'>Stats</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
+		<li class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
+		<li class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
+		<li class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
+		<li class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
+		<li class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
+	</ul>
+</div>
+
+<?php
+	$builder->buildBottom();
 ?>

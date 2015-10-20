@@ -25,7 +25,7 @@
 		$result = $statement -> execute() -> fetchArray( SQLITE3_ASSOC );
 
 		if( $result === FALSE || $result === null ) {
-			header( "Location: login_error.php" );
+			header( "Location: login_error.php?username=$username" );
 		}
 		else {
 			$_SESSION["user"] = $result["username"];
