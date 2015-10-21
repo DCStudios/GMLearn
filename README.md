@@ -1,12 +1,11 @@
-# ProjectManager
+# GMLearn
 ------------------------------------------------------------------------------------------------------------------------
 ## What is it?
-A small application to manage my own projects from anywhere
+A website based on lessons and rewards to learn how to use GML ( GameMaker Language )
+in GameMaker:Studio
 
 ------------------------------------------------------------------------------------------------------------------------
 ## TODO
-- Create User System
 - Add Project System
-- Incorporate JsLibs
 - Make Admin account
 - Make Admin page
