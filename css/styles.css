@@ -165,21 +165,22 @@ hr.separator { border: none; }
 .message .message-body a { float: right; }
 
 /* -- <editor-fold desc="Login"> ----------------------------------------------- */
-#login { position: relative; left: 50%; top: 50%; width: 30%; min-width: 500px; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
-#login table { width: 100%; }
-#login table tr td { padding-bottom: 8px; text-align: right; }
-#login table tr td .onoffswitch { float: right; margin-right: -8px; }
-#login table tr td:first-child { width: 160px; }
-#login table tr:last-child td { padding-top: 32px; padding-bottom: 0; }
-#login table tr:last-child td:last-child { position: absolute; right: 1px; width: 100%; }
-#login table tr:last-child td:last-child .button + .button { margin-left: 8px; }
-#login table tr:last-child td:last-child .button + a { margin-left: 8px; }
-#login table tr:last-child td:last-child a + .button { margin-left: 8px; }
-#login table tr:last-child td:last-child::before { position: absolute; top: 12px; left: 0; width: 100%; content: ' '; border-top: 1px solid #814181; }
-#login label { position: relative; right: 12px; top: 10px; -webkit-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -moz-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -ms-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -o-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; }
-#login .onoffswitch-label { right: 9px; top: 0; }
-#login .text { width: 100%; }
-#login .register { position: fixed; right: 8px; bottom: 8px; }
+#login, #register { position: relative; left: 50%; top: 50%; width: 30%; min-width: 500px; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+#login #message, #register #message { position: absolute; left: 50%; top: -96px; width: 120%; padding: 16px; border-radius: 16px; line-height: 1.8em; background: #331a33; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+#login table, #register table { width: 100%; }
+#login table tr td, #register table tr td { padding-bottom: 8px; text-align: right; }
+#login table tr td .onoffswitch, #register table tr td .onoffswitch { float: right; margin-right: -8px; }
+#login table tr td:first-child, #register table tr td:first-child { width: 160px; }
+#login table tr:last-child td, #register table tr:last-child td { padding-top: 32px; padding-bottom: 0; }
+#login table tr:last-child td:last-child, #register table tr:last-child td:last-child { position: absolute; right: 1px; width: 100%; }
+#login table tr:last-child td:last-child .button + .button, #register table tr:last-child td:last-child .button + .button { margin-left: 8px; }
+#login table tr:last-child td:last-child .button + a, #register table tr:last-child td:last-child .button + a { margin-left: 8px; }
+#login table tr:last-child td:last-child a + .button, #register table tr:last-child td:last-child a + .button { margin-left: 8px; }
+#login table tr:last-child td:last-child::before, #register table tr:last-child td:last-child::before { position: absolute; top: 12px; left: 0; width: 100%; content: ' '; border-top: 1px solid #814181; }
+#login label, #register label { position: relative; right: 12px; top: 10px; -webkit-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -moz-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -ms-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -o-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; }
+#login .onoffswitch-label, #register .onoffswitch-label { right: 9px; top: 0; }
+#login .text, #register .text { width: 100%; }
+#login .register, #register .register { position: fixed; right: 8px; bottom: 8px; }
 
 #userpanel { position: absolute; left: 0; top: 0; bottom: 0; width: 256px; background: url("asfalt-dark.png") #5f305f; -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); }
 #userpanel .gravatar { position: absolute; top: 8px; left: 8px; width: 48px; height: 48px; background: #331a33; -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); -moz-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }

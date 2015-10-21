@@ -136,7 +136,7 @@ var Transition;
     Transition.prototype.bindEverything = function() {
         this.bindAnchors();
         this.bindForms();
-    }
+    };
 
     /**
      * Add a callback for all <a> in the container
@@ -155,9 +155,10 @@ var Transition;
      */
     Transition.prototype.bindForms = function() {
         $( "form", this.container ).each( function( i,form ){
-            $( form ).submit( this.onFormSubmit.bind( this ) );
+			$( form ).attr("data-valid","valid");
+			$( form ).bind( "submit", this.onFormSubmit.bind( this ) );
         }.bind( this ));
-    }
+    };
 
     /**
      * Disable <a>
@@ -191,18 +192,20 @@ var Transition;
     Transition.prototype.onFormSubmit = function( ev ) {
         ev.preventDefault();
 
-        var form = $(ev.delegateTarget);
-        $.ajax({
-            url: form.attr("action"),
-            type: form.attr("method"),
-            data: form.serialize(),
-            dataType: 'json',
-            beforeSend: this.onAnchorBeforeSend.bind( this ),
-            complete: this.onAnchorComplete.bind( this )
-        });
+        var $form = $(ev.delegateTarget);
+		if( $form.attr("data-valid") == "valid" ) {
+	        $.ajax({
+	            url: $form.attr("action"),
+	            type: $form.attr("method"),
+	            data: $form.serialize(),
+	            dataType: 'json',
+	            beforeSend: this.onAnchorBeforeSend.bind( this ),
+	            complete: this.onAnchorComplete.bind( this )
+	        });
+		}
 
         return false;
-    }
+    };
 
     /**
      * Init exit animation and start loading newContent
@@ -252,6 +255,10 @@ var Transition;
         this._onLoadNextPageCompleted();
         this.timer = setTimeout( this._onIntroCompleted.bind( this ), this.introLength );
         this.bindEverything();
+		$( ".transition-evalme", this.container ).each( function( i,e ) {
+			jQuery.globalEval( $(e).html() );
+			$(e).removeClass("transition-evalme");
+		});
     };
 
     /**

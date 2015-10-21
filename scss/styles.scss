@@ -428,7 +428,8 @@
 
 /* -- <editor-fold desc="Login"> ----------------------------------------------- */
 
-	#login {
+	#login,
+	#register {
 		position: relative;
 		left: 50%;
 		top: 50%;
@@ -436,6 +437,18 @@
 		min-width: 500px;
 
 		@include transform( translate( -50%,-50% ) );
+
+		#message {
+			position: absolute;
+			left: 50%;
+			top: -96px;
+			width: 120%;
+			padding: 16px;
+			border-radius: 16px;
+			line-height: 1.8em;
+			background: darken( $background, 5% );
+			@include transform( translate( -50%,-50% ) );
+		}
 
 		table {
 			width: 100%;
