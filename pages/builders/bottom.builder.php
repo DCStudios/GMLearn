@@ -3,18 +3,18 @@
 	require_once "pages/builders/Builder.php";
 
 
-	$build_bottom = function( $extraContent="" ) { ?>
+	$build_bottom = function( $extraContent="", $introLength=800, $exitLength=800 ) { ?>
 </div>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/transitions.js"></script>
 	<script text="text/javascript">
 		DefineTransition( "transition-container", {
-			intro: 800,
-			exit: 800,
+			intro: <?php echo $introLength; ?>,
+			exit: <?php echo $exitLength; ?>,
 			class: "is-exiting"
 		});
 	</script>
-	<? php echo $extraContent; ?>
+	<?php echo $extraContent; ?>
 </body>
 </html>
 	<?php };

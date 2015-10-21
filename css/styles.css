@@ -22,6 +22,30 @@
 @keyframes fadeInLeftExit { 0% { opacity: 1; left: 0; }
   50% { opacity: 0; left: 50%; }
   100% { opacity: 0; left: 100%; } }
+@-webkit-keyframes fadeInLeftAlt { 0% { opacity: 0; transform: translateX(100%); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 1; transform: translateX(0); } }
+@-moz-keyframes fadeInLeftAlt { 0% { opacity: 0; transform: translateX(100%); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 1; transform: translateX(0); } }
+@-o-keyframes fadeInLeftAlt { 0% { opacity: 0; transform: translateX(100%); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInLeftAlt { 0% { opacity: 0; transform: translateX(100%); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 1; transform: translateX(0); } }
+@-webkit-keyframes fadeInLeftExitAlt { 0% { opacity: 1; transform: translateX(0); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 0; transform: translateX(100%); } }
+@-moz-keyframes fadeInLeftExitAlt { 0% { opacity: 1; transform: translateX(0); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 0; transform: translateX(100%); } }
+@-o-keyframes fadeInLeftExitAlt { 0% { opacity: 1; transform: translateX(0); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 0; transform: translateX(100%); } }
+@keyframes fadeInLeftExitAlt { 0% { opacity: 1; transform: translateX(0); }
+  50% { opacity: 0; transform: translateX(50%); }
+  100% { opacity: 0; transform: translateX(100%); } }
 @-webkit-keyframes fadeInRight { 0% { opacity: 0; left: -100%; }
   50% { opacity: 0; left: -50%; }
   100% { opacity: 1; left: 0; } }
@@ -94,13 +118,23 @@
 @keyframes fadeInZoomExit { 0% { opacity: 1; left: 0; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); }
   50% { opacity: 0; left: 0; -webkit-transform: scale(0.5); -moz-transform: scale(0.5); -ms-transform: scale(0.5); -o-transform: scale(0.5); transform: scale(0.5); }
   100% { opacity: 0; left: 100%; -webkit-transform: scale(0); -moz-transform: scale(0); -ms-transform: scale(0); -o-transform: scale(0); transform: scale(0); } }
-.anim, .transition { -webkit-animation-duration: 250ms; -moz-animation-duration: 250ms; -o-animation-duration: 250ms; animation-duration: 250ms; -webkit-animation-timing-function: ease-out; -moz-animation-timing-function: ease-out; -o-animation-timing-function: ease-out; animation-timing-function: ease-out; -webkit-animation-fill-mode: both; -moz-animation-fill-mode: both; -o-animation-fill-mode: both; animation-fill-mode: both; }
+.anim, .transition, .shortTransition, .nextTransition, .nextShortTransition { -webkit-animation-duration: 250ms; -moz-animation-duration: 250ms; -o-animation-duration: 250ms; animation-duration: 250ms; -webkit-animation-timing-function: ease-out; -moz-animation-timing-function: ease-out; -o-animation-timing-function: ease-out; animation-timing-function: ease-out; -webkit-animation-fill-mode: both; -moz-animation-fill-mode: both; -o-animation-fill-mode: both; animation-fill-mode: both; }
 
 .transition { -webkit-animation-duration: 800ms; -moz-animation-duration: 800ms; -o-animation-duration: 800ms; animation-duration: 800ms; -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.shortTransition { -webkit-animation-duration: 600ms; -moz-animation-duration: 600ms; -o-animation-duration: 600ms; animation-duration: 600ms; -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.nextTransition { -webkit-animation-duration: 800ms; -moz-animation-duration: 800ms; -o-animation-duration: 800ms; animation-duration: 800ms; -webkit-animation-delay: 400ms; -moz-animation-delay: 400ms; -o-animation-delay: 400ms; animation-delay: 400ms; -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.nextShortTransition { -webkit-animation-duration: 600ms; -moz-animation-duration: 600ms; -o-animation-duration: 600ms; animation-duration: 600ms; -webkit-animation-delay: 200ms; -moz-animation-delay: 200ms; -o-animation-delay: 200ms; animation-delay: 200ms; -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -moz-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); -o-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .animFadeInLeft { -webkit-animation-name: fadeInLeft; -moz-animation-name: fadeInLeft; -o-animation-name: fadeInLeft; animation-name: fadeInLeft; }
 
 .is-exiting .animFadeInLeft { -webkit-animation-name: fadeInLeftExit; -moz-animation-name: fadeInLeftExit; -o-animation-name: fadeInLeftExit; animation-name: fadeInLeftExit; -webkit-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); -moz-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); -o-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); }
+
+.animFadeInLeftAlt { -webkit-animation-name: fadeInLeftAlt; -moz-animation-name: fadeInLeftAlt; -o-animation-name: fadeInLeftAlt; animation-name: fadeInLeftAlt; }
+
+.is-exiting .animFadeInLeftAlt { -webkit-animation-name: fadeInLeftExitAlt; -moz-animation-name: fadeInLeftExitAlt; -o-animation-name: fadeInLeftExitAlt; animation-name: fadeInLeftExitAlt; -webkit-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); -moz-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); -o-animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); animation-timing-function: cubic-bezier(0.46, 0.225, 0.65, 0.9); }
 
 .animFadeInRight { -webkit-animation-name: fadeInRight; -moz-animation-name: fadeInRight; -o-animation-name: fadeInRight; animation-name: fadeInRight; }
 
@@ -161,7 +195,7 @@ hr.separator { border: none; }
 /* <editor-fold desc="Messages"> */
 .message { display: inline-block; position: relative; left: 50%; top: 50%; border: 1px solid #c388c3; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-box-shadow: 4px 4px 24px 1px rgba(0, 0, 0, 0.7); -moz-box-shadow: 4px 4px 24px 1px rgba(0, 0, 0, 0.7); box-shadow: 4px 4px 24px 1px rgba(0, 0, 0, 0.7); }
 .message .message-header { background: #5f305f; padding: 16px; font-weight: 700,bold; font-size: 18pt; border-bottom: 1px solid #c388c3; -webkit-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -moz-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -ms-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; -o-text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; text-shadow: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111; }
-.message .message-body { background: url("asfalt-dark.png") #442244; padding: 16px 48px; }
+.message .message-body { background: url("asfalt-dark.png") #442244; padding: 16px 48px; line-height: 1.5em; }
 .message .message-body a { float: right; }
 
 /* -- <editor-fold desc="Login"> ----------------------------------------------- */
@@ -194,5 +228,9 @@ hr.separator { border: none; }
 #userpanel .panelitemgroup .panelitem:nth-child(1), #userpanel .panelitemgroup .panelitem:nth-child(2) { margin-top: 0; }
 #userpanel .panelitemgroup .panelitem i { position: absolute; left: 16px; top: 4px; width: 64px; height: 64px; text-align: center; line-height: 64px; color: white; background: #442244; border-radius: 8px; }
 #userpanel .panelitemgroup .panelitem .itemname { position: absolute; left: 0; bottom: 4px; right: 0; color: white; text-align: center; font-size: 10pt; -webkit-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); -moz-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); -ms-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); -o-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); }
+
+#member-page { position: absolute; left: 256px; top: 0; bottom: 0; width: calc( 100% - 256px ); padding: 64px; }
+#member-page .page-title { font-size: 24pt; font-weight: 700; }
+#member-page .message { position: relative; left: 0; top: 32px; width: 100%; -webkit-transform: none; -moz-transform: none; -ms-transform: none; -o-transform: none; transform: none; }
 
 /*# sourceMappingURL=styles.css.map */

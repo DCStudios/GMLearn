@@ -40,7 +40,21 @@
 	$builder->buildHeader( "Membership - Member" );
 ?>
 
-<div id="userpanel" class="transition animFadeInRightAlt">
+<div id="member-page" class="nextShortTransition animFadeInLeftAlt">
+	<h1 class="page-title">Welcome, <?php echo $_SESSION["user"]; ?>!</h1>
+	<div class="message">
+		<div class="message-header"><h1>News</h1></div>
+		<div class="message-body"><p>
+			The website is currently under construction.<br>
+			You are welcome to visit it anytime you like.<br>
+			You'll see a message here when the first lessons are available.<br>
+			Meanwhile, accounts, lessons and pages might be modified or deleted.<br><br>
+			You've beem warned.
+		</p></div>
+	</div>
+</div>
+
+<div id="userpanel" class="shortTransition animFadeInRightAlt">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>
 	<span class="username"><?php echo $_SESSION["user"];?></span>
 	<span class="usergroup">member</span>

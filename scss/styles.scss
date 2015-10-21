@@ -97,6 +97,13 @@
 		animation-duration: $value;
 	}
 
+	@mixin animation-delay( $value ) {
+		-webkit-animation-delay: $value;
+		-moz-animation-delay: $value;
+		-o-animation-delay: $value;
+		animation-delay: $value;
+	}
+
 	@mixin animation-timing-function( $value ) {
 		-webkit-animation-timing-function: $value;
 		-moz-animation-timing-function: $value;
@@ -149,6 +156,18 @@
 		100% { opacity: 0; left: 100%; }
 	}
 
+	@include keyframes( fadeInLeftAlt ) {
+		0% { opacity: 0; transform: translateX( 100% ); }
+		50% { opacity: 0; transform: translateX( 50% ); }
+		100% { opacity: 1; transform: translateX( 0 ); }
+	}
+
+	@include keyframes( fadeInLeftExitAlt ) {
+		0% { opacity: 1; transform: translateX( 0 ); }
+		50% { opacity: 0; transform: translateX( 50% ); }
+		100% { opacity: 0; transform: translateX( 100% ); }
+	}
+
 	@include keyframes( fadeInRight ) {
 		0% { opacity: 0; left: -100%; }
 		50% { opacity: 0; left: -50% }
@@ -197,11 +216,43 @@
 		@include animation-timing-function( $easeOut );
 	}
 
+	.shortTransition {
+		@extend .anim;
+		@include animation-duration( 600ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.nextTransition {
+		@extend .anim;
+		@include animation-duration( 800ms );
+		@include animation-delay( 400ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.nextShortTransition {
+		@extend .anim;
+		@include animation-duration( 600ms );
+		@include animation-delay( 200ms );
+		@include animation-timing-function( $easeOut );
+	}
+
 	.animFadeInLeft { @include animation-name( fadeInLeft ); }
-	.is-exiting .animFadeInLeft { @include animation-name( fadeInLeftExit ); @include animation-timing-function( $easeIn ); }
+	.is-exiting .animFadeInLeft {
+		@include animation-name( fadeInLeftExit );
+		@include animation-timing-function( $easeIn );
+	}
+
+	.animFadeInLeftAlt { @include animation-name( fadeInLeftAlt ); }
+	.is-exiting .animFadeInLeftAlt {
+		@include animation-name( fadeInLeftExitAlt );
+		@include animation-timing-function( $easeIn );
+	}
 
 	.animFadeInRight { @include animation-name( fadeInRight ); }
-	.is-exiting .animFadeInRight { @include animation-name( fadeInRightExit ); @include animation-timing-function( $easeIn ); }
+	.is-exiting .animFadeInRight {
+		@include animation-name( fadeInRightExit );
+		@include animation-timing-function( $easeIn );
+	}
 
 	.animFadeInRightAlt { @include animation-name( fadeInRightAlt ); }
 	.is-exiting .animFadeInRightAlt {
@@ -210,7 +261,10 @@
 	}
 
 	.animFadeInZoom { @include animation-name( fadeInZoom ); }
-	.is-exiting .animFadeInZoom { @include animation-name( fadeInZoomExit ); @include animation-timing-function( $easeIn ); }
+	.is-exiting .animFadeInZoom {
+		@include animation-name( fadeInZoomExit );
+		@include animation-timing-function( $easeIn );
+	}
 
 // </editor-fold>
 
@@ -415,6 +469,7 @@
 			.message-body {
 				background: url("asfalt-dark.png") darken( $main, 8% );
 				padding: 16px 48px;
+				line-height: 1.5em;
 
 				a {
 					float: right;
@@ -616,6 +671,28 @@
 					@include text-shadow( 0 1px 2px rgba( 0,0,0,0.5 ) );
 				}
 			}
+		}
+	}
+
+	#member-page {
+		position: absolute;
+		left: 256px;
+		top: 0;
+		bottom: 0;
+		width: calc( 100% - 256px );
+		padding: 64px;
+
+		.page-title {
+			font-size: 24pt;
+			font-weight: 700;
+		}
+
+		.message {
+			position: relative;
+			left: 0;
+			top: 32px;
+			width: 100%;
+			@include transform( none );
 		}
 	}
 
