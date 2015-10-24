@@ -12,6 +12,18 @@
 		header("Location: login.php");
 	}
 
+	//Check if changing theme
+	if( isset( $_GET["theme"] ) ) {
+		$theme = strtolower( $_GET["theme"] );
+		if( file_exists( "scss/$theme.theme.scss" ) ) {
+			$statement = $sql->prepare("UPDATE users SET theme = :theme WHERE userid = :userid;");
+			$statement->bindValue( ":theme", $theme );
+			$statement->bindValue( ":userid", $_SESSION["userid"] );
+			$statement->execute();
+			$_SESSION["theme"] = $theme;
+		}
+	}
+
 	/**
 	 * Get either a Gravatar URL or complete image tag for a specified email address.
 	 *
@@ -52,18 +64,7 @@
 			You've beem warned.
 		</p></div>
 	</div>
-	<div id="dd" class="dd transition-exclude" tabindex="1" title="<?php echo ucfirst( $_SESSION["theme"] ); ?>">
-		<ul class="dropdown">
-			<li><a href="#">Profile</a></li>
-			<li><a href="#">Settings</a></li>
-			<li><a href="#">Log out</a></li>
-		</ul>
-	</div>
 </div>
-
-<script class="transition-evalme">
-	$(".dd").fancyDropDown();
-</script>
 
 <div id="userpanel" class="shortTransition animFadeInRightAlt">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>

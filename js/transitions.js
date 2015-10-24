@@ -155,10 +155,12 @@ var Transition;
      */
     Transition.prototype.bindForms = function() {
         $( "form", this.container ).each( function( i,form ){
-			if( $(form).parents(".transition-exclude").length == 0) {
+			//if( $(form).parents(".transition-exclude").length == 0) {
+                console.log( "Binding form" );
+                console.info( form );
                 $( form ).attr("data-valid","valid");
                 $( form ).bind( "submit", this.onFormSubmit.bind( this ) );
-            }
+            //}
         }.bind( this ));
     };
 
@@ -182,7 +184,6 @@ var Transition;
         var a = $(ev.delegateTarget);
         a.off( "click" );
         a.on( "click", this.fakeOnClick );
-        console.log( "Visiting: "+a.attr("href") );
         $.ajax({
             url: a.attr("href"),
             beforeSend: this.onAnchorBeforeSend.bind( this ),
@@ -253,6 +254,7 @@ var Transition;
      */
     Transition.prototype.injectNewContent = function() {
         if( this.newContent.attr("reload") != "full" ) {
+            this.container.empty();
             this.container.html( this.newContent.html() );
             this.timer = setTimeout( this._onIntroCompleted.bind( this ), this.introLength );
             this.bindEverything();
