@@ -52,19 +52,17 @@
 	$builder->buildHeader( "Membership - Member", $_SESSION["theme"] );
 ?>
 
-<div id="member-page" class="nextShortTransition animFadeInLeftAlt">
-	<h1 class="page-title">Welcome, <?php echo $_SESSION["user"]; ?>!</h1>
-	<div class="message">
-		<div class="message-header"><h1>News</h1></div>
-		<div class="message-body"><p>
-			The website is currently under construction.<br>
-			You are welcome to visit it anytime you like.<br>
-			You'll see a message here when the first lessons are available.<br>
-			Meanwhile, accounts, lessons and pages might be modified or deleted.<br><br>
-			You've beem warned.
-		</p></div>
-	</div>
+<div id="member-page" class="nextShortTransition animFadeInLeftAlt transition-exclude">
+	<?php include_once "pages/member/dashboard.php"; ?>
 </div>
+<script>
+	DefineTransition( "member-page", {
+		intro: 400,
+		exit: 400,
+		class: "is-exiting",
+		exclude: "member-exclude"
+	});
+</script>
 
 <div id="userpanel" class="shortTransition animFadeInRightAlt">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>
