@@ -37,7 +37,7 @@
 	    return $url;
 	}
 
-	$builder->buildHeader( "Membership - Member" );
+	$builder->buildHeader( "Membership - Member", $_SESSION["theme"] );
 ?>
 
 <div id="member-page" class="nextShortTransition animFadeInLeftAlt">
@@ -52,7 +52,18 @@
 			You've beem warned.
 		</p></div>
 	</div>
+	<div id="dd" class="dd transition-exclude" tabindex="1" title="<?php echo ucfirst( $_SESSION["theme"] ); ?>">
+		<ul class="dropdown">
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Settings</a></li>
+			<li><a href="#">Log out</a></li>
+		</ul>
+	</div>
 </div>
+
+<script class="transition-evalme">
+	$(".dd").fancyDropDown();
+</script>
 
 <div id="userpanel" class="shortTransition animFadeInRightAlt">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>

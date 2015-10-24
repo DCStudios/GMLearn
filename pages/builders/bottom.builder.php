@@ -5,7 +5,6 @@
 
 	$build_bottom = function( $extraContent="", $introLength=800, $exitLength=800 ) { ?>
 </div>
-	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/transitions.js"></script>
 	<script text="text/javascript">
 		DefineTransition( "transition-container", {

@@ -8,4 +8,4 @@ in GameMaker:Studio
 ## TODO
 - Add Project System
 - Make Admin account
-- Make Admin page
+- Make Admin pagea

@@ -144,7 +144,7 @@ var Transition;
      */
     Transition.prototype.bindAnchors = function() {
         $( "a", this.container ).each( function( i,a ) {
-            $(a).on( "click", this.onAnchorClick.bind( this ) );
+            if( $(a).parents(".transition-exclude").length == 0 ) $(a).on( "click", this.onAnchorClick.bind( this ) );
         }.bind( this ));
     };
 
@@ -155,8 +155,10 @@ var Transition;
      */
     Transition.prototype.bindForms = function() {
         $( "form", this.container ).each( function( i,form ){
-			$( form ).attr("data-valid","valid");
-			$( form ).bind( "submit", this.onFormSubmit.bind( this ) );
+			if( $(form).parents(".transition-exclude").length == 0) {
+                $( form ).attr("data-valid","valid");
+                $( form ).bind( "submit", this.onFormSubmit.bind( this ) );
+            }
         }.bind( this ));
     };
 
@@ -250,15 +252,18 @@ var Transition;
      * @return {void}
      */
     Transition.prototype.injectNewContent = function() {
-        this.container.removeClass( this.exitClass );
-        this.container.html( this.newContent.html() );
-        this._onLoadNextPageCompleted();
-        this.timer = setTimeout( this._onIntroCompleted.bind( this ), this.introLength );
-        this.bindEverything();
-		$( ".transition-evalme", this.container ).each( function( i,e ) {
-			jQuery.globalEval( $(e).html() );
-			$(e).removeClass("transition-evalme");
-		});
+        if( this.newContent.attr("reload") != "full" ) {
+            this.container.html( this.newContent.html() );
+            this.timer = setTimeout( this._onIntroCompleted.bind( this ), this.introLength );
+            this.bindEverything();
+    		$( ".transition-evalme", this.container ).each( function( i,e ) {
+    			jQuery.globalEval( $(e).html() );
+    			$(e).removeClass("transition-evalme");
+    		});
+            this.container.removeClass( this.exitClass );
+            this._onLoadNextPageCompleted();
+        }
+        else location.reload();
     };
 
     /**

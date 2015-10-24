@@ -19,7 +19,7 @@
 
 	if( $username !== NULL && $password !== NULL ) {
 
-		$statement = $sql -> prepare( "SELECT username,email FROM users WHERE username = :user AND password = :pass" );
+		$statement = $sql -> prepare( "SELECT username,email,theme FROM users WHERE username = :user AND password = :pass" );
 		$statement -> bindValue( ":user", $username );
 		$statement -> bindValue( ":pass", sha1( $sqlSalt . $password ) );
 		$result = $statement -> execute() -> fetchArray( SQLITE3_ASSOC );
@@ -30,8 +30,9 @@
 		else {
 			$_SESSION["user"] = $result["username"];
 			$_SESSION["email"] = $result["email"];
+			$_SESSION["theme"] = $result["theme"];
 			$_SESSION["loggedIn"] = true;
-			header( "Location: member.php" );
+			header( "Location: member.php?theme=".$result["theme"] );
 		}
 	}
 

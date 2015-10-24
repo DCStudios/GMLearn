@@ -1,8 +1,17 @@
 <?php
 
 	require_once "pages/builders/Builder.php";
+	require_once "php/scssphp/scss.inc.php";
 
-	$build_header = function( $title ) { ?>
+	$build_header = function( $title, $theme="default" ) {
+		if( isset( $_GET["theme"] ) ) $theme = $_GET["theme"];
+		if( file_exists( "scss/$theme.theme.scss" ) ) $style = file_get_contents( "scss/$theme.theme.scss" );
+		else $style = file_get_contents( "scss/default.theme.scss" );
+		$style .= file_get_contents( "scss/styles.scss" ) . file_get_contents( "scss/controls.scss" );
+		$scss = new scssc();
+		$scss -> setFormatter( "scss_formatter_compressed" );
+		$compiledStyles = $scss -> compile( $style );
+?>
 
 <!DOCTYPE <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +24,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/styles.css">
+	<style>
+		<?php echo $compiledStyles; ?>
+	</style>
 </head>
 <body>
-	<div id="transition-container">
-
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/controls.js"></script>
+	<div id="transition-container" <?php if( isset( $_GET["theme"] ) ) echo "reload=\"full\"";?>>
 	<?php };
 
 	$builder -> bind( "buildHeader", $build_header );
