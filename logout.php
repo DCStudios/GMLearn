@@ -17,6 +17,6 @@
 
 	$builder -> buildHeader( "Sign Out" );
 	$builder -> buildMessagebox( "Sign Out", "You've signed out correctly.", [
-		"Thanks" => [ "type"=>"link", "link"=>"login.php", "class"=>"primary" ]
+		"Thanks" => [ "type"=>"link", "link"=>"login.php?theme=default", "class"=>"primary" ]
 	]);
 ?>

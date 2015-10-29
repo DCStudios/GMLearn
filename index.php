@@ -1,11 +1,12 @@
 <?php
 
-	// #COMPLETED:10 Create user system
-	// #COMPLETED:0 Add Member page
+	// #COMPLETED:20 Create user system
+	// #COMPLETED:10 Add Member page
 	// #TODO:0 Add Project system
-	// #COMPLETED:20 Incorporate JsLibs
+	// #COMPLETED:30 Incorporate JsLibs
 	// #DOING:0 Make Admin Account
 	// #DOING:10 Make Admin page
+	// #COMPLETED:0 Complete Theme system
 
 	$CWD = ".";
 	require_once( "php/sqlite.php" );

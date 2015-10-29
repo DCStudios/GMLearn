@@ -40,7 +40,7 @@
 	// Check if we should use auto-fill username
 	$user = filter_input( INPUT_GET, "user" );
 
-	$builder -> buildHeader( "Membership - Login" );
+	$builder -> buildHeader( "Membership - Login", "default" );
 ?>
 			<div id="anim-wrapper" class="transition animfadeInRight">
 

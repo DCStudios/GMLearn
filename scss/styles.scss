@@ -271,6 +271,10 @@
 		line-height: 1.2em;
 	}
 
+	a {
+		text-decoration: none;
+	}
+
 	.invisible {
 		display: none;
 	}
@@ -628,7 +632,7 @@
 				cursor: pointer;
 				@include user-select( none );
 
-				@include linear-gradient-anim( complement( lighten( $main, 15 ) ), lighten( $main,15% ), lighten( $main,5% ) );
+				@include linear-gradient-anim( $gradient1-1,$gradient1-2,$gradient1-3 );
 				background-size: 100% 200%;
 				background-position: bottom;
 				@include transition( background-position 120ms );

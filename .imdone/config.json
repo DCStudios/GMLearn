@@ -1,6 +1,6 @@
 {
   "exclude": [
-    "^(node_modules|nbproject|bower_components|\\.imdone|target|build|dist|logs)[\\/\\\\]?|\\.(git|svn|hg|npmignore|sass|phpintel)|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
+    "^(node_modules|nbproject|bower_components|\\.imdone|target|build|dist|logs)[\\/\\\\]?|\\.(git|svn|hg|npmignore|sass|phpintel)|php\\/scssphp|\\~$|\\.(jpg|png|gif|swp|ttf|otf)$"
   ],
   "watcher": true,
   "code": {
