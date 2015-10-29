@@ -52,11 +52,11 @@
 	$builder->buildHeader( "Membership - Member", $_SESSION["theme"] );
 ?>
 
-<div id="member-page" class="nextShortTransition animFadeInLeftAlt transition-exclude">
+<div id="member-page-container"><div id="member-page" class="nextShortTransition animFadeInLeftAlt transition-exclude">
 	<?php include_once "pages/member/dashboard.php"; ?>
-</div>
+</div></div>
 <script>
-	DefineTransition( "member-page", {
+	DefineTransition( "member-page-container", {
 		intro: 400,
 		exit: 400,
 		class: "is-exiting",
@@ -64,18 +64,29 @@
 	});
 </script>
 
-<div id="userpanel" class="shortTransition animFadeInRightAlt">
+<div id="userpanel" class="shortTransition animFadeInRightAlt transition-exclude">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>
 	<span class="username"><?php echo $_SESSION["user"];?></span>
 	<span class="usergroup">member</span>
 	<ul class="panelitemgroup">
-		<li class="panelitem"><a href="#"><span class='itemname'>Stats</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
+		<li id="btnDashboard" class="panelitem"><a href="#"><span class='itemname'>Dashboard</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
-		<li class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
+		<li id="btnLogout" class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
 	</ul>
+</div>
+<div class="transition-evalme invisible">
+	$("#btnDashboard").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/dashboard.php");
+	});
+
+	$("#btnLogout").on("click",function(e) {
+		e.preventDefault();
+		$("#transition-container").data("transition").Goto("logout.php");
+	});
 </div>
 
 <?php
