@@ -1,0 +1,5 @@
+$base-color: #884488;
+$background: darken( $base-color, 30% );
+$foreground: $base-color + #888888;
+$main: lighten( $background, 10% );
+$shadow: darken( $background, 5% );
