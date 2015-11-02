@@ -125,10 +125,16 @@ var Transition = (function () {
     Transition.prototype.findIdInArray = function (array, lookup) {
         var i;
         lookup = lookup.replace("#", "");
+        console.log( "-- Find in Array -------------------" );
+        console.log(array);
         for (i = 0; i < array.length; i++) {
-            if ($(array[i]).attr("id") == lookup)
+            console.log( i+": "+typeof $(array[i]).attr("id")+" - "+lookup );
+            if ($(array[i]).attr("id") == lookup) {
+                console.log("------------------------------------");
                 return $(array[i]);
+            }
         }
+        console.log("------------------------------------");
     };
     return Transition;
 })();

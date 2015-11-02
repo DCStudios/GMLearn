@@ -1,4 +1,7 @@
-<?php if( !isset( $CWD ) ) $CWD = ".."; ?>
+<?php
+	if( !isset( $CWD ) ) $CWD = "..";
+?>
+<!--
 <script src="<?php echo $CWD; ?>/js/reloadr.js"></script>
 <script>
 	var CWD = "<?php echo $CWD; ?>";
@@ -15,3 +18,4 @@
 
 	console.log( CWD+"/css/styles.css" );
 </script>
+-->

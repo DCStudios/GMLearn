@@ -73,7 +73,7 @@
 		<li class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
 		<li class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
-		<li class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
+		<li id="btnPreferences" class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
 		<li id="btnLogout" class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
 	</ul>
 </div>
@@ -81,6 +81,11 @@
 	$("#btnDashboard").on("click",function(e) {
 		e.preventDefault();
 		$("#member-page-container").data("transition").Goto("pages/member/dashboard.php");
+	});
+
+	$("#btnPreferences").on("click", function(e){
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/preferences.php");
 	});
 
 	$("#btnLogout").on("click",function(e) {

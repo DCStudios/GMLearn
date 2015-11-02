@@ -4,9 +4,10 @@
 	// #COMPLETED:10 Add Member page
 	// #TODO:0 Add Project system
 	// #COMPLETED:30 Incorporate JsLibs
-	// #DOING:0 Make Admin Account
-	// #DOING:10 Make Admin page
+	// #DOING:10 Make Admin Account
+	// #DOING:20 Make Admin page
 	// #COMPLETED:0 Complete Theme system
+	// #DOING:0 Fix member page transition "tried to follow invalid link" +ERROR
 
 	$CWD = ".";
 	require_once( "php/sqlite.php" );

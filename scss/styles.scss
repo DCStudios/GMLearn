@@ -677,8 +677,10 @@
 		left: 256px;
 		top: 0;
 		bottom: 0;
+		min-width: 512px;
 		width: calc( 100% - 256px );
 		padding: 64px;
+		overflow: auto;
 
 		.page-title {
 			font-size: 24pt;
@@ -686,9 +688,9 @@
 		}
 
 		.message {
+			position: default;
 			left: 0;
 			top: 0;
-			margin-top: 32px;
 			width: 100%;
 			@include transform( none );
 		}
