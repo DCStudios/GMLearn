@@ -682,6 +682,12 @@
 		padding: 64px;
 		overflow: auto;
 
+		.page-header {
+			font-size: 24pt;
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+		}
+
 		.page-title {
 			font-size: 24pt;
 			font-weight: 700;

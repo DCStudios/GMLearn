@@ -3,12 +3,12 @@
 
 
 		<div class="message">
-			<div class="message-header"><h1>Dashboard</h1></div>
+			<div class="message-header"><h1>Achievements</h1></div>
 			<div class="message-body"><p>
-				The dashboard is a work in progress right now...
+				You currently have no achievements under your account.
 			</p></div>
 		</div>
 
-		
+
 	</div>
 </div>

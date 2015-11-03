@@ -3,12 +3,12 @@
 
 
 		<div class="message">
-			<div class="message-header"><h1>Dashboard</h1></div>
+			<div class="message-header"><h1>Chat</h1></div>
 			<div class="message-body"><p>
-				The dashboard is a work in progress right now...
+				The chat is currently offline, please visit back another day.
 			</p></div>
 		</div>
 
-		
+
 	</div>
 </div>

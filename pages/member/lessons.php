@@ -3,12 +3,13 @@
 
 
 		<div class="message">
-			<div class="message-header"><h1>Dashboard</h1></div>
+			<div class="message-header"><h1>Lessons</h1></div>
 			<div class="message-body"><p>
-				The dashboard is a work in progress right now...
+				The Lesson section is currently empty.<br>
+				Please come check again in the futur!
 			</p></div>
 		</div>
 
-		
+
 	</div>
 </div>

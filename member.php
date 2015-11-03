@@ -52,9 +52,8 @@
 	$builder->buildHeader( "Membership - Member", $_SESSION["theme"] );
 ?>
 
-<div id="member-page-container"><div id="member-page" class="nextShortTransition animFadeInLeftAlt transition-exclude">
-	<?php include_once "pages/member/dashboard.php"; ?>
-</div></div>
+<?php include_once "pages/member/welcome.php"; ?>
+
 <script>
 	DefineTransition( "member-page-container", {
 		intro: 400,
@@ -70,9 +69,9 @@
 	<span class="usergroup">member</span>
 	<ul class="panelitemgroup">
 		<li id="btnDashboard" class="panelitem"><a href="#"><span class='itemname'>Dashboard</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
-		<li class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
-		<li class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
-		<li class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
+		<li id="btnLessons" class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
+		<li id="btnAchievements" class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
+		<li id="btnChat" class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
 		<li id="btnPreferences" class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
 		<li id="btnLogout" class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
 	</ul>
@@ -81,6 +80,21 @@
 	$("#btnDashboard").on("click",function(e) {
 		e.preventDefault();
 		$("#member-page-container").data("transition").Goto("pages/member/dashboard.php");
+	});
+
+	$("#btnLessons").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/lessons.php");
+	});
+
+	$("#btnAchievements").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/achievements.php");
+	});
+
+	$("#btnChat").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/chat.php");
 	});
 
 	$("#btnPreferences").on("click", function(e){
