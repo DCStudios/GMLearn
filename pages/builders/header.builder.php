@@ -7,9 +7,7 @@
 		if( isset( $_GET["theme"] ) ) $theme = $_GET["theme"];
 		if( file_exists( "scss/themes/$theme.theme.scss" ) ) $style = file_get_contents( "scss/themes/$theme.theme.scss" );
 		else $style = file_get_contents( "scss/themes/default.theme.scss" );
-		$style .= 	file_get_contents( "scss/dropy.scss" )
-					// .file_get_contents( "scss/controls.scss" )
-					.file_get_contents( "scss/styles.scss" );
+		$style .= 	file_get_contents( "scss/styles.scss" );
 		$scss = new scssc();
 		$scss -> setFormatter( "scss_formatter_compressed" );
 		$compiledStyles = $scss -> compile( $style );
@@ -26,6 +24,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/combobox.css">
 	<style>
 		<?php echo $compiledStyles; ?>
 	</style>
@@ -34,7 +33,7 @@
 	<script src="js/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="js/controls.js"></script> -->
 	<script type="text/javascript" src="js/transitions.js"></script>
-	<script type="text/javascript" src="js/dropy.js"></script>
+	<script type="text/javascript" src="js/combobox.js"></script>
 	<div id="transition-container" <?php if( isset( $_GET["theme"] ) ) echo "reload=\"full\"";?>>
 	<?php };
 
