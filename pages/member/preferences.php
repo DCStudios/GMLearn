@@ -13,22 +13,32 @@
 	$css = $scss -> compile( file_get_contents( "$CWD/scss/pages/member_preferences.scss" ) );
 ?>
 
-<style type="text/css"><?php echo $css; ?></style>
 <div id="member-page-container">
 	<div id="member-page" class="nextShortTransition animFadeInLeftAlt transition-exclude">
-
+		<style type="text/css"><?php echo $css; ?></style>
 
 		<h1 class="page-header">Preferences</h1>
 
-		<p id="theme-selector-label" class="pref-label">Theme:</p>
-		<div id="theme-selector" class="pref-control">
-			<span><?php echo ucfirst($theme);?></span>
-			<ul>
-				<li>Default</li>
-				<li>Light</li>
-				<li>Dark</li>
-			</ul>
-		</div>
+		<table id="member-preferences">
+			<tr>
+				<td><p id="theme-selector-label">Theme:</p></td>
+				<td>
+					<div id="theme-selector">
+						<span><?php echo ucfirst($theme);?></span>
+						<ul>
+							<li>Default</li>
+							<li>Light</li>
+							<li>Dark</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" class="button primary" value="Save"></td>
+			</tr>
+		</table>
+
 		<script>
 			var $themeSelector = $("#theme-selector");
 			new Controls.Combobox( $themeSelector );

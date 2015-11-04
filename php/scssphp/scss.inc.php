@@ -378,7 +378,7 @@ class scssc {
 		return $scope;
 	}
 
-	// TODO refactor compileNestedBlock and compileMedia into same thing
+	// #TODO:60 refactor compileNestedBlock and compileMedia into same thing
 	protected function compileNestedBlock($block, $selectors) {
 		$this->pushEnv($block);
 
@@ -725,7 +725,7 @@ class scssc {
 			foreach ($list[2] as $item) {
 				$this->pushEnv();
 				$this->set($each->var, $item);
-				// TODO: allow return from here
+				// #TODO:30 allow return from here
 				$this->compileChildren($each->children, $out);
 				$this->popEnv();
 			}
@@ -1743,7 +1743,7 @@ class scssc {
 	}
 
 	// sorts any keyword arguments
-	// TODO: merge with apply arguments
+	// #TODO:50 merge with apply arguments
 	protected function sortArgs($prototype, $args) {
 		$keyArgs = array();
 		$posArgs = array();
@@ -3727,7 +3727,7 @@ class scss_parser {
 		$s = $this->seek();
 		if ($this->literal("#{") && $this->valueList($value) && $this->literal("}", false)) {
 
-			// TODO: don't error if out of bounds
+			// #TODO:40 don't error if out of bounds
 
 			if ($lookWhite) {
 				$left = preg_match('/\s/', $this->buffer[$s - 1]) ? " " : "";
@@ -3922,7 +3922,7 @@ class scss_parser {
 			}
 
 			// attribute selector
-			// TODO: replace with open string?
+			// #TODO:70 replace with open string?
 			if ($this->literal("[", false)) {
 				$attrParts = array("[");
 				// keyword, string, operator

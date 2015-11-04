@@ -1,12 +1,10 @@
-.pref-label {
-	width: 25%;
-}
-
-.pref-control {
-	width: 75%;
-}
-
-#theme-selector {
+#member-preferences {
 	margin-top: 32px;
-	width: 50%;
+	width: 100%;
+	td:first-child { padding-top: 4px; width: 15%; }
+	tr:last-child {
+		td { padding-top: 32px;}
+		.button { float: right; }
+	}
+
 }
