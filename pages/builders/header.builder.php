@@ -31,7 +31,7 @@
 </head>
 <body>
 	<script src="js/jquery.min.js"></script>
-	<!-- <script type="text/javascript" src="js/controls.js"></script> -->
+	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="js/transitions.js"></script>
 	<script type="text/javascript" src="js/combobox.js"></script>
 	<div id="transition-container" <?php if( isset( $_GET["theme"] ) ) echo "reload=\"full\"";?>>

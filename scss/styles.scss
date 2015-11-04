@@ -288,6 +288,10 @@
 		opacity: 0;
 	}
 
+	h1#error-title {
+		line-height: 1.5em;
+	}
+
 	hr.separator {
 		border:none;
 	}
@@ -699,11 +703,6 @@
 			top: 0;
 			width: 100%;
 			@include transform( none );
-		}
-
-		#theme-selector {
-			margin-top: 32px;
-			width: 50%;
 		}
 	}
 

@@ -3,9 +3,11 @@ var Transition = (function () {
         this.container = containerID;
         this.timer = null;
         this.newContent = null;
+        this.originalNewContent = null;
         this.canLoadNewContent = false;
         this.introLength = option.intro;
         this.exitLenth = option.exit;
+        this.ignore = option.ignore;
         this.exitClass = option.exitClass;
         this.excludeClass = option.excludeClass;
         this._onIntroCompleted = option.introCompleted;
@@ -88,6 +90,7 @@ var Transition = (function () {
     };
     Transition.prototype.onBindedComplete = function (x) {
         this.newContent = this.findIdInArray($(x.responseText), this.container.selector);
+        this.originalNewContent = $(x.responseText);
         if (this.canLoadNewContent)
             this.injectNewContent();
     };
@@ -99,7 +102,13 @@ var Transition = (function () {
     };
     Transition.prototype.injectNewContent = function () {
         if (this.newContent === undefined) {
-            console.warn("TransitionJS: Tried to follow an invalid link!");
+            if( !this.ignore ) {
+                this.container.empty();
+                this.container.html( this.originalNewContent );
+            }
+            else {
+                console.warn("TransitionJS: Tried to follow an invalid link!");
+            }
             this.timer = setTimeout(this._onIntroCompleted, this.introLength);
             this.bindEverything();
             this.container.removeClass(this.exitClass);
@@ -125,16 +134,11 @@ var Transition = (function () {
     Transition.prototype.findIdInArray = function (array, lookup) {
         var i;
         lookup = lookup.replace("#", "");
-        console.log( "-- Find in Array -------------------" );
-        console.log(array);
         for (i = 0; i < array.length; i++) {
-            console.log( i+": "+typeof $(array[i]).attr("id")+" - "+lookup );
             if ($(array[i]).attr("id") == lookup) {
-                console.log("------------------------------------");
                 return $(array[i]);
             }
         }
-        console.log("------------------------------------");
     };
     return Transition;
 })();
@@ -142,6 +146,7 @@ var TransitionOptions = (function () {
     function TransitionOptions() {
         this.intro = 0;
         this.exit = 0;
+        this.ignore = true;
         this.exitClass = "is-exiting";
         this.excludeClass = "transition-exclude";
         this.introCompleted = this.emptyFunction;
@@ -159,6 +164,8 @@ function DefineTransition(containerID, options) {
         realOptions.intro = options.intro;
     if (typeof options.exit !== "undefined")
         realOptions.exit = options.exit;
+    if (typeof options.ignore !== "undefined")
+        realOptions.ignore = options.ignore;
     if (typeof options.exitClass !== "undefined")
         realOptions.exitClass = options.exitClass;
     if (typeof options.excludeClass !== "undefined")

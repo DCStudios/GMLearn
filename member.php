@@ -58,6 +58,7 @@
 	DefineTransition( "member-page-container", {
 		intro: 400,
 		exit: 400,
+		ignore: false,
 		class: "is-exiting",
 		exclude: "member-exclude"
 	});
