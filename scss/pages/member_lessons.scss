@@ -1,0 +1,6 @@
+.message~.message,
+.message~.closableMessage,
+.closableMessage~.message,
+.closableMessage~.closableMessage {
+	margin-top: 32px;
+}
