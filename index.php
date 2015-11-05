@@ -1,14 +1,14 @@
 <?php
 
-	// #COMPLETED:30 Create user system
-	// #COMPLETED:20 Add Member page
+	// #COMPLETED:40 Create user system
+	// #COMPLETED:30 Add Member page
 	// #TODO:20 Add Project system
-	// #COMPLETED:40 Incorporate JsLibs
+	// #COMPLETED:50 Incorporate JsLibs
 	// #TODO:0 Make Admin Account
 	// #TODO:10 Make Admin page
-	// #COMPLETED:10 Complete Theme system
-	// #COMPLETED:0 Fix member page transition "tried to follow invalid link" +ERROR
-	// #DOING:0 Find a way to detect error and trigger error_reporting only when an error occurs +ERROR
+	// #COMPLETED:20 Complete Theme system
+	// #COMPLETED:10 Fix member page transition "tried to follow invalid link" +ERROR
+	// #COMPLETED:0 Find a way to detect error and trigger error_reporting only when an error occurs +ERROR
 
 	$CWD = ".";
 	require_once( "php/sqlite.php" );

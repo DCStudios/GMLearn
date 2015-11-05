@@ -458,7 +458,7 @@
 			@include box-shadow( 4px 4px 24px 1px rgba( 0,0,0,0.7 ) );
 
 			.message-header {
-				background: $main;
+				background: url("css/asfalt-dark.png") $main;
 				padding: 16px;
 				font-weight: 700,bold;
 				font-size: 18pt;
@@ -469,7 +469,7 @@
 			}
 
 			.message-body {
-				background: url("css/asfalt-dark.png") darken( $main, 8% );
+				background: darken( $main, 8% );
 				padding: 16px 48px;
 				line-height: 1.5em;
 

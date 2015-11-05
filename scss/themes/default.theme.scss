@@ -1,7 +1,7 @@
 $base-color: #884488;
 $background: darken( $base-color, 30% );
-$foreground: $base-color + #888888;
-$main: lighten( $background, 10% );
+$foreground: lighten( $base-color, 40% );
+$main: lighten( $background, 15% );
 $shadow: darken( $background, 5% );
 $gradient1-1: complement( lighten( $main, 15% ) );
 $gradient1-2: lighten( $main, 15% );

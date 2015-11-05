@@ -4,6 +4,7 @@
 	td:first-child { padding-top: 4px; width: 15%; }
 	tr:last-child {
 		td { padding-top: 32px;}
-		.button { float: right; }
+		.button { float: right; margin-right: 8px; }
+		.button:first-child { margin-right: 0; }
 	}
 }

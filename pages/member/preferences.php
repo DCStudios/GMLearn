@@ -28,6 +28,7 @@
 							$themeList = scandir( "$CWD/scss/themes" );
 							foreach( $themeList as $themePath ) {
 								if( $themePath == "." || $themePath == ".." ) continue;
+								if( strpos( $themePath, ".theme.append.scss" ) !== false ) continue;
 								echo "<li>".ucfirst(str_replace(".theme.scss","",$themePath))."</li>";
 							}
 						?></ul>

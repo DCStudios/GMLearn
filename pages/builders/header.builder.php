@@ -6,13 +6,27 @@
 	require_once "php/scssphp/scss.inc.php";
 
 	$build_header = function( $title, $theme="default" ) {
+		// Check if changing theme
 		if( isset( $_GET["theme"] ) ) $theme = $_GET["theme"];
-		if( file_exists( "scss/themes/$theme.theme.scss" ) ) $style = file_get_contents( "scss/themes/$theme.theme.scss" );
-		else $style = file_get_contents( "scss/themes/default.theme.scss" );
+
+		// Check if theme exists
+		if( !file_exists( "scss/themes/$theme.theme.scss" ) ) $theme = "default";
+
+		// Load theme
+		$style = file_get_contents( "scss/themes/$theme.theme.scss" );
 		$style .= 	file_get_contents( "scss/styles.scss" );
+
+		// Check if theme has modifications to append
+		if( file_exists( "scss/themes/$theme.theme.append.scss" ) ) {
+			$style .= file_get_contents( "scss/themes/$theme.theme.append.scss" );
+		}
+
+		// Compile CSS
 		$scss = new scssc();
 		$scss -> setFormatter( "scss_formatter_compressed" );
 		$compiledStyles = $scss -> compile( $style );
+
+		// Start generating HTML5
 ?>
 
 <!DOCTYPE <!DOCTYPE html>
@@ -37,7 +51,8 @@
 	<script type="text/javascript" src="js/transitions.js"></script>
 	<script type="text/javascript" src="js/combobox.js"></script>
 	<div id="transition-container" <?php if( isset( $_GET["theme"] ) ) echo "reload=\"full\"";?>>
-	<?php };
+
+<?php };
 
 	$builder -> bind( "buildHeader", $build_header );
 

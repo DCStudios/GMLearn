@@ -1,0 +1,12 @@
+.button.primary { @include linear-gradient-anim(#88F,#44C,#118); }
+.button.alternative { @include linear-gradient-anim(#AAA,#666,#333); }
+
+.c-combobox {
+	color: $foreground;
+	@include linear-gradient(lighten($main,20%),darken($main,5%));
+}
+
+.c-combobox::after, c-combobox.open::after {
+	border-color: darken($foreground,10%) transparent transparent transparent;
+}
+.c-combobox-item:hover { background: #111; }

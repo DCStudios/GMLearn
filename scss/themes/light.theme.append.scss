@@ -1,0 +1,29 @@
+.button {
+	$values:
+		-1px -1px 1px rgba(0,0,0,0.7),
+		1px 1px 1px rgba(0,0,0,0.7),
+		1px -1px 1px rgba(0,0,0,0.7),
+		-1px 1px 1px rgba(0,0,0,0.7);
+	@include text-shadow( $values );
+
+	&.primary { color: #FFF; @include linear-gradient-anim( #DDF,#CCF,#AAF ); }
+	&.alternative { color: #FFF; @include linear-gradient-anim( #FFF, #DDD, #BBB ); }
+}
+
+#member-page .page-header { color: #FFF; }
+
+.message {
+	@include box-shadow( 0 0 12px rgba( 0,0,0,0.5 ) );
+	.message-header {
+		background: url("css/asfalt-dark.png") lighten( $main,5% );
+		color: #FFF;
+		@include text-shadow( 1px 1px #000 ); }
+	.message-body { background: lighten( $main, 5% ); }
+}
+
+.c-combobox {
+	background: #FFF;
+}
+.c-combobox-item:hover {
+	background: #CCC;
+}

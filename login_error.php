@@ -1,5 +1,5 @@
 <?php
-
+	$CWD = ".";
 	require_once "pages/builders/Builder.php";
 	require_once "pages/builders/header.builder.php";
 	require_once "pages/builders/bottom.builder.php";

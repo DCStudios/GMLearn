@@ -31,6 +31,10 @@
     {
       "name": "COMPLETED",
       "hidden": false
+    },
+    {
+      "name": "XXX",
+      "hidden": false
     }
   ],
   "marked": {
