@@ -34,7 +34,7 @@
     },
     {
       "name": "XXX",
-      "hidden": false
+      "hidden": true
     }
   ],
   "marked": {

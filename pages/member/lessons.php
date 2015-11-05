@@ -3,10 +3,14 @@
 
 
 		<div class="message">
-			<div class="message-header"><h1>Lessons</h1></div>
+			<div class="message-header"><h1>Information</h1></div>
 			<div class="message-body"><p>
-				The Lesson section is currently empty.<br>
-				Please come check again in the futur!
+				The following lessons are available for your current level.
+				As you complete lessons, more and more lessons will unlock.<br>
+				Lessons are categorized per difficulty level. Since not everyone
+				starts with the same level of knowledge, the first lesson of each
+				category is made available.<br>Do please progress in the difficulty
+				that suits you most.
 			</p></div>
 		</div>
 
