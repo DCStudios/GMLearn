@@ -1,5 +1,7 @@
 <?php
 
+	if( !isset( $CWD ) ) $CWD = "../..";
+	require_once "$CWD/php/error_reporter.php";
 	require_once "pages/builders/Builder.php";
 	require_once "php/scssphp/scss.inc.php";
 

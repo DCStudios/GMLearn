@@ -1,8 +1,7 @@
 <?php
 	$CWD = "../..";
-	require_once "$CWD/php/error_reporter.php";
-	//\php_error\reportErrors();
 
+	require_once "$CWD/php/error_reporter.php";
 	require_once "$CWD/php/sqlite.php";
 	require_once "$CWD/php/scssphp/scss.inc.php";
 
@@ -25,34 +24,36 @@
 				<td>
 					<div id="theme-selector">
 						<span><?php echo ucfirst($theme);?></span>
-						<ul>
-							<li>Default</li>
-							<li>Light</li>
-							<li>Dark</li>
-						</ul>
+						<ul><?php
+							$themeList = scandir( "$CWD/scss/themes" );
+							foreach( $themeList as $themePath ) {
+								if( $themePath == "." || $themePath == ".." ) continue;
+								echo "<li>".ucfirst(str_replace(".theme.scss","",$themePath))."</li>";
+							}
+						?></ul>
 					</div>
 				</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="button" class="button primary" value="Save"></td>
+				<td>
+					<input id="btnSavePreferences" type="button" class="button primary" value="Apply Changes">
+					<input id="btnResetPreferences" type="button" value="Reset Modifications" class="button alternative">
+				</td>
 			</tr>
 		</table>
 
 		<script>
 			var $themeSelector = $("#theme-selector");
-			new Controls.Combobox( $themeSelector );
-			/*
-			$themeSelector.on("changed", function(e,val){
-				window.location.search = "?theme="+val.toLowerCase();
-				$("#transition-container").data("transition").Goto("member.php?theme="+val.toLowerCase());
-			});
+			var themeSelector = new Controls.Combobox( $themeSelector );
 
-			var $_GET = parseGET();
-			if( typeof $_GET["theme"] !== "undefined" ) {
-				$themeSelector.data("c-combobox").text.html( ucfirst( $_GET["theme"] ) );
-			}
-			*/
+			var defaultTheme = themeSelector.value;
+			$("#btnSavePreferences").on("click", function(){
+				$("#transition-container").data("transition").Goto("?theme="+themeSelector.value );
+			});
+			$("#btnResetPreferences").on("click", function(){
+				themeSelector.value = defaultTheme;
+			});
 		</script>
 
 
