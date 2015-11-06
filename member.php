@@ -1,11 +1,12 @@
 <?php
 	$CWD = ".";
-	require_once "php/reload.php";
-	require_once "php/sqlite.php";
-	require_once "pages/builders/Builder.php";
-	require_once "pages/builders/header.builder.php";
-	require_once "pages/builders/bottom.builder.php";
-	require_once "pages/builders/messagebox.builder.php";
+	require_once "$CWD/php/error_reporter.php";
+	require_once "$CWD/php/reload.php";
+	require_once "$CWD/php/sqlite.php";
+	require_once "$CWD/pages/builders/Builder.php";
+	require_once "$CWD/pages/builders/header.builder.php";
+	require_once "$CWD/pages/builders/bottom.builder.php";
+	require_once "$CWD/pages/builders/messagebox.builder.php";
 
 	$theme = "default";
 
@@ -71,7 +72,7 @@
 <div id="userpanel" class="shortTransition animFadeInRightAlt transition-exclude">
 	<?php echo get_gravatar( $_SESSION["email"], 48, "mm", "r", true, ["class"=>"gravatar"] ); ?>
 	<span class="username"><?php echo $_SESSION["user"];?></span>
-	<span class="usergroup">member</span>
+	<span class="usergroup"><?php echo $_SESSION["group"]; ?></span>
 	<ul class="panelitemgroup">
 		<li id="btnDashboard" class="panelitem"><a href="#"><span class='itemname'>Dashboard</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
 		<li id="btnLessons" class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>

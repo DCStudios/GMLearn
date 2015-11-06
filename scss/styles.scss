@@ -467,6 +467,21 @@
 				$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
 				@include text-shadow( $values );
 
+				&[data-control] {
+					position: relative;
+					cursor: pointer;
+					@include user-select( none );
+				}
+				&[data-control]:hover::after {
+					content: ' ';
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: rgba( 255,255,255,0.05 );
+				}
+
 				.message-header-toggle {
 					display: inline-block;
 					position: absolute;
@@ -751,6 +766,68 @@
 			top: 0;
 			width: 100%;
 			@include transform( none );
+		}
+
+		.lesson {
+			padding: 16px;
+			cursor: pointer;
+			border-radius: 16px;
+			@include user-select( none );
+
+			&:hover { background: lighten( $main,5% ); @include box-shadow( 0 0 16px 4px lighten( $main, 5% ); }
+
+			.lesson-icon {
+				left: 0;
+				top: 0;
+				width: 128px;
+				height: 128px;
+				float: left;
+			}
+
+			.lesson-info {
+				position: relative;
+				float: left;
+				margin-left: 16px;
+
+				.lesson-title {
+					font-size: 18pt;
+					font-weight: 700;
+				}
+
+				.lesson-description {
+					margin-top: 24px;
+					font-size: 14pt;
+				}
+			}
+		}
+
+		table.styled {
+			width: calc( 100% - 64px );
+			border: 1px solid darken( $foreground, 30% );
+			background: $main;
+			margin: 32px;
+			margin-bottom: 64px;
+			font-size: 16pt;
+			tr:nth-child(odd) {
+				background: rgba( 0,0,0,0.30 );
+			}
+			caption {
+				text-align: left;
+				font-weight: 700;
+				font-size: 16pt;
+			}
+			tr {
+				td:first-child { padding-right: 2%; width: 30%; text-align: right; }
+				td:last-child { width: 70%; }
+				td {
+					height: 48px;
+					line-height: 48px;
+				}
+
+				&:hover {
+					background: rgba( 255, 255, 255, 0.05 );
+				}
+			}
 		}
 	}
 

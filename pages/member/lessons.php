@@ -1,11 +1,25 @@
 <?php
 	$CWD = "../..";
 	require_once "$CWD/php/error_reporter.php";
+	require_once "$CWD/php/sqlite.php";
 	require_once "$CWD/php/scssphp/scss.inc.php";
 
 	$scss = new scssc();
 	//$scss -> setFormatter( "scss_formatter_compressed" );
 	$css = $scss -> compile( file_get_contents( "$CWD/scss/pages/member_lessons.scss" ) );
+
+	$statement = $sql->prepare("
+		SELECT name,description,url,icon FROM lessons
+		WHERE name IN (
+		SELECT lessons.name FROM lessons
+		JOIN users
+		WHERE
+			users.username = :user AND
+			users.xp >= lessons.required
+		);
+	");
+	$statement -> bindValue(":user",$_SESSION["user"] );
+	$result = $statement -> execute();
 ?>
 
 <div id="member-page-container">
@@ -30,12 +44,41 @@
 		<script>new Controls.Accordeon($("#t-info"));</script>
 
 		<div class="closableMessage">
-			<div class="message-header">
+			<div id="t-beginner" class="message-header" data-control="#beginner">
 				<h1>Beginner</h1>
-				<span id="t-beginner" class="message-header-toggle" data-control="#beginner"></span>
 			</div>
 			<div id="beginner" class="message-body">
-				Test
+				<?php
+					$lid = 0;
+					if( $result !== FALSE ) {
+						while( $row = $result -> fetchArray( SQLITE3_ASSOC ) ) {
+							?>
+							<div id="lesson_<?php echo $lid; ?>" class="lesson">
+								<img class="lesson-icon" src="<?php echo $row["icon"]; ?>">
+								<div class="lesson-info">
+									<h1 class="lesson-title"><?php echo $row["name"]; ?></h1>
+									<p class="lesson-description"><?php echo $row["description"]; ?></p>
+								</div>
+								<div class="dummy"></div>
+							</div>
+							<script>$("#lesson_<?php echo $lid++; ?>").on("click",function(){
+								$("#member-page-container").data("transition").Goto("<?php echo $row["url"]; ?>");
+							});
+							</script>
+							<?php
+						}
+					}
+				?>
+				<!--
+				<div class="lesson">
+					<img class="lesson-icon" src="">
+					<div class="lesson-info">
+						<h1 class="lesson-title">First Lesson</h1>
+						<p class="lesson-description">The first lesson.</p>
+					</div>
+					<div class="dummy"></div>
+				</div>
+				-->
 			</div>
 		</div>
 		<script>new Controls.Accordeon($("#t-beginner"));</script>

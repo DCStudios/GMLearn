@@ -1,6 +1,7 @@
 <?php
 
-	require_once "pages/builders/Builder.php";
+	if( !isset( $CWD ) ) $CWD = "../..";
+	require_once "$CWD/pages/builders/Builder.php";
 
 	$build_messagebox = function ( $title, $message, $buttonOptions ) { ?>
 <div id="anim-wrapper" class="transition animFadeInZoom">
