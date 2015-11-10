@@ -6,8 +6,6 @@ var Controls;
             this.childs = null;
             if (this.isValid()) {
                 this.initialize();
-                console.log("Creating accordeon with " + this.childs.length + " childs.");
-                console.log(this.container);
             }
         }
         Accordeon.prototype.isValid = function () {

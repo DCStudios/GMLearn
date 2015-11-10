@@ -40,17 +40,19 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/prism.css">
 	<link rel="stylesheet" href="css/combobox.css">
 	<style>
 		<?php echo $compiledStyles; ?>
 	</style>
 </head>
 <body>
-	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
 	<script type="text/javascript" src="js/transitions.js"></script>
 	<script type="text/javascript" src="js/combobox.js"></script>
 	<script type="text/javascript" src="js/accordeon.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
 	<div id="transition-container" <?php if( isset( $_GET["theme"] ) ) echo "reload=\"full\"";?>>
 
 <?php };

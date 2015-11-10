@@ -194,6 +194,10 @@
 		100% { opacity: 0; left: 100%; @include transform( scale( 0 ) ); }
 	}
 
+	i:not(.fa) {
+		color: complement( $foreground );
+	}
+
 	.anim {
 		@include animation-duration( 250ms );
 		@include animation-timing-function( ease-out );
@@ -273,6 +277,21 @@
 
 	a {
 		text-decoration: none;
+	}
+
+	.quote {
+		display: block;
+		padding: 16px 32px;
+		font-style: italic;
+		opacity: 0.75;
+	}
+
+	.quote pre {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
 	}
 
 	.invisible {
@@ -457,6 +476,10 @@
 			@include transform( translate( -50%,-50% ) );
 			@include box-shadow( 4px 4px 24px 1px rgba( 0,0,0,0.7 ) );
 
+			&:not(:first-child) {
+				margin-top: 32px;
+			}
+
 			.message-header {
 				background: url("css/asfalt-dark.png") $main;
 				padding: 16px;
@@ -525,6 +548,11 @@
 
 				a {
 					float: right;
+				}
+
+				.indexList a {
+					float: none;
+					color: complement( $foreground );
 				}
 			}
 		}
