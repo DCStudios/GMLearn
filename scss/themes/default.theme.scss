@@ -6,3 +6,4 @@ $shadow: darken( $background, 5% );
 $gradient1-1: complement( lighten( $main, 15% ) );
 $gradient1-2: lighten( $main, 15% );
 $gradient1-3: darken( $main, 5% );
+$highlight: complement( $foreground );

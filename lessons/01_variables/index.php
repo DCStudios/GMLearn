@@ -55,14 +55,21 @@
 				operator. You can set the number <i>5</i> to the variable <i>score</i> with the following piece of code:
 			</p>
 			<pre class="line-numbers"><code class="language-clike">score = 5;</code></pre>
+			<span class="code-description">Storing the value <i>5</i> in the variable <i>score</i></span>
 			<p class="message-body">
-				We can then <i>retreive</i> the value <i>stored</i> inside the variable by placing the variable on the
-				other side of the <i>assingment</i> operator:
+				We can then <i>retrieve</i> the value <i>stored</i> inside the variable by placing the variable on the
+				other side of the <i>assignment </i> operator:
 			</p>
 			<pre class="line-numbers"><code class="language-clike">value = score;</code></pre>
+			<span class="code-description">Assigning the value of <i>score</i> to <i>value</i></span>
 			<p class="message-body">
 				The above piece of code does two things, first it gets the variable stored inside <i>score</i>, then it
 				stores it inside the variable <i>value</i>.
+			</p>
+			<p class="message-body">
+				In the end, using a <i>variable</i> is simple. You store a <i>value</i> inside it, which you can then
+				later <i>retrieve</i> by using the <i>variable</i> like if it was your common <i>number</i> or
+				<i>string</i>.
 			</p>
 		</div>
 
