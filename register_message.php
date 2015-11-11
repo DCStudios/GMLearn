@@ -1,5 +1,6 @@
 <?php
 	$CWD = ".";
+	require_once "php/error_reporter.php";
 	require_once "php/reload.php";
 	require_once "php/sqlite.php";
 	require_once "pages/builders/Builder.php";
@@ -15,6 +16,8 @@
 	$messageContent = "";
 	$messageButtonText = "";
 	$messageButtonLink = "";
+
+	$statement=NULL;
 
 	if( $username !== NULL && $password !== NULL && $email !== NULL ) {
 		$statement = $sql->prepare( "INSERT INTO users(username,password,email) VALUES(:user,:pass,:email);" );
@@ -47,5 +50,6 @@
 	$builder -> buildMessagebox( $messageTitle, $messageContent, [
 		$messageButtonText => [ "type"=>"link", "link"=>$messageButtonLink, "class"=>"primary" ]
 	]);
+	echo "<!--".print_r($statement,true)."-->";
 	$builder -> buildBottom();
 ?>
