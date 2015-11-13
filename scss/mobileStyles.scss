@@ -1,0 +1,862 @@
+// -- <editor-fold desc="Other Vars"> ------------------------------------------
+
+	$easeIn: cubic-bezier(0.460, 0.225, 0.650, 0.900); //cubic-bezier(0.550, 0.055, 0.675, 0.190);
+	$easeOut: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+// </editor-fold>
+
+// -- <editor-fold desc="Vendors"> ---------------------------------------------
+
+	@mixin linear-gradient( $col1, $col2 ) {
+		background: $col1;
+		background: -moz-linear-gradient(top,  $col1 0%, $col2 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$col1), color-stop(100%,$col2));
+		background: -webkit-linear-gradient(top,  $col1 0%,$col2 100%);
+		background: -o-linear-gradient(top,  $col1 0%,$col2 100%);
+		background: -ms-linear-gradient(top,  $col1 0%,$col2 100%);
+		background: linear-gradient(to bottom,  $col1 0%,$col2 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$col1', endColorstr='$col2',GradientType=0 );
+	}
+
+	@mixin linear-gradient-anim( $col1, $col2, $col3 ) {
+		background: $col2;
+		background: -moz-linear-gradient(top,  $col1 0%, $col2 50%, $col3 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$col1), color-stop(50%,$col2), color-stop(100%,$col3));
+		background: -webkit-linear-gradient(top,  $col1 0%, $col2 50%, $col3 100%);
+		background: -o-linear-gradient(top,  $col1 0%, $col2 50%, $col3 100%);
+		background: -ms-linear-gradient(top,  $col1 0%, $col2 50%, $col3 100%);
+		background: linear-gradient(to bottom,  $col1 0%, $col2 50%, $col3 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$col1', endColorstr='$col3',GradientType=0 );
+	}
+
+	@mixin transition( $value ) {
+		-webkit-transition: $value;
+		-moz-transition: $value;
+		-ms-transition: $value;
+		-o-transition: $value;
+		transition: $value;
+	}
+
+	@mixin transform( $value ) {
+		-webkit-transform: $value;
+		-moz-transform: $value;
+		-ms-transform: $value;
+		-o-transform: $value;
+		transform: $value;
+	}
+
+	@mixin box-shadow( $value ) {
+		-webkit-box-shadow: $value;
+		-moz-box-shadow: $value;
+		box-shadow: $value;
+	}
+
+	@mixin text-shadow( $value ) {
+		-webkit-text-shadow: $value;
+		-moz-text-shadow: $value;
+		-ms-text-shadow: $value;
+		-o-text-shadow: $value;
+		text-shadow: $value;
+	}
+
+	@mixin keyframes( $name ) {
+		@-webkit-keyframes #{$name} { @content; }
+		@-moz-keyframes #{$name} { @content; }
+		@-o-keyframes #{$name} { @content; }
+		@keyframes #{$name} { @content; }
+	}
+
+	@mixin animation( $value ) {
+		-webkit-animation: $value;
+		-moz-animation: $value;
+		-o-animation: $value;
+		animation: $value;
+	}
+
+	@mixin animation-name( $value ) {
+		-webkit-animation-name: $value;
+		-moz-animation-name: $value;
+		-o-animation-name: $value;
+		animation-name: $value;
+	}
+
+	@mixin animation-duration( $value ) {
+		-webkit-animation-duration: $value;
+		-moz-animation-duration: $value;
+		-o-animation-duration: $value;
+		animation-duration: $value;
+	}
+
+	@mixin animation-delay( $value ) {
+		-webkit-animation-delay: $value;
+		-moz-animation-delay: $value;
+		-o-animation-delay: $value;
+		animation-delay: $value;
+	}
+
+	@mixin animation-timing-function( $value ) {
+		-webkit-animation-timing-function: $value;
+		-moz-animation-timing-function: $value;
+		-o-animation-timing-function: $value;
+		animation-timing-function: $value;
+	}
+
+	@mixin animation-iteration-count( $value ) {
+		-webkit-animation-iteration-count: $value;
+		-moz-animation-iteration-count: $value;
+		-o-animation-iteration-count: $value;
+		animation-iteration-count: $value;
+	}
+
+	@mixin animation-fill-mode( $value ) {
+		-webkit-animation-fill-mode: $value;
+		-moz-animation-fill-mode: $value;
+		-o-animation-fill-mode: $value;
+		animation-fill-mode: $value;
+	}
+
+	@mixin animation-direction( $value ) {
+		-webkit-animation-direction: $value;
+		-moz-animation-direction: $value;
+		-o-animation-direction: $value;
+		animation-direction: $value;
+	}
+
+	@mixin user-select( $value ) {
+		-webkit-user-select: $value;
+		-moz-user-select: $value;
+		-ms-user-select: $value;
+		-o-user-select: $value;
+		user-select: $value;
+	}
+
+// </editor-fold>
+
+// -- <editor-fold desc="Animations"> ----------------------------------
+
+	@include keyframes( fadeInLeft ) {
+		0% { opacity: 0; left: 100%; }
+		50% { opacity: 0; left: 50% }
+		100% { opacity: 1; left: 0; }
+	}
+
+	@include keyframes( fadeInLeftExit ) {
+		0% { opacity: 1; left: 0; }
+		50% { opacity: 0; left: 50%; }
+		100% { opacity: 0; left: 100%; }
+	}
+
+	@include keyframes( fadeInLeftAlt ) {
+		0% { opacity: 0; transform: translateX( 100% ); }
+		50% { opacity: 0; transform: translateX( 50% ); }
+		100% { opacity: 1; transform: translateX( 0 ); }
+	}
+
+	@include keyframes( fadeInLeftExitAlt ) {
+		0% { opacity: 1; transform: translateX( 0 ); }
+		50% { opacity: 0; transform: translateX( 50% ); }
+		100% { opacity: 0; transform: translateX( 100% ); }
+	}
+
+	@include keyframes( fadeInRight ) {
+		0% { opacity: 0; left: -100%; }
+		50% { opacity: 0; left: -50% }
+		100% { opacity: 1; left: 0; }
+	}
+
+	@include keyframes( fadeInRightExit ) {
+		0% { opacity: 1; left: 0; }
+		50% { opacity: 0; left: -50%; }
+		100% { opacity: 0; left: -100%; }
+	}
+
+	@include keyframes( fadeInRightAlt ) {
+		0% { opacity: 0; transform: translateX( -100% ); }
+		50% { opacity: 0; transform: translateX( -50% ); }
+		100% { opacity: 1; transform: translateX( 0 ); }
+	}
+
+	@include keyframes( fadeInRightExitAlt ) {
+		0% { opacity: 1; transform: translateX( 0 ); }
+		50% { opacity: 0; transform: translateX( -50% ); }
+		100% { opacity: 0; transform: translateX( -100% ); }
+	}
+
+	@include keyframes( fadeInZoom ) {
+		0% { opacity: 0; left: 0; @include transform( scale( 0 ) ); }
+		50% { opacity: 0; left: 0;@include transform( scale( 0.5 ) ); }
+		100% { opacity: 1; left: 0;@include transform( scale( 1 ) ); }
+	}
+
+	@include keyframes( fadeInZoomExit ) {
+		0% { opacity: 1; left: 0; @include transform( scale( 1 ) ); }
+		50% { opacity: 0; left: 0; @include transform( scale( 0.5 ) ); }
+		100% { opacity: 0; left: 100%; @include transform( scale( 0 ) ); }
+	}
+
+	.anim {
+		@include animation-duration( 250ms );
+		@include animation-timing-function( ease-out );
+		@include animation-fill-mode( both );
+	}
+
+	.transition {
+		@extend .anim;
+		@include animation-duration( 800ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.shortTransition {
+		@extend .anim;
+		@include animation-duration( 600ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.nextTransition {
+		@extend .anim;
+		@include animation-duration( 800ms );
+		@include animation-delay( 400ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.nextShortTransition {
+		@extend .anim;
+		@include animation-duration( 600ms );
+		@include animation-delay( 200ms );
+		@include animation-timing-function( $easeOut );
+	}
+
+	.animFadeInLeft { @include animation-name( fadeInLeft ); }
+	.is-exiting .animFadeInLeft {
+		@include animation-name( fadeInLeftExit );
+		@include animation-timing-function( $easeIn );
+	}
+
+	.animFadeInLeftAlt { @include animation-name( fadeInLeftAlt ); }
+	.is-exiting .animFadeInLeftAlt {
+		@include animation-name( fadeInLeftExitAlt );
+		@include animation-timing-function( $easeIn );
+	}
+
+	.animFadeInRight { @include animation-name( fadeInRight ); }
+	.is-exiting .animFadeInRight {
+		@include animation-name( fadeInRightExit );
+		@include animation-timing-function( $easeIn );
+	}
+
+	.animFadeInRightAlt { @include animation-name( fadeInRightAlt ); }
+	.is-exiting .animFadeInRightAlt {
+		@include animation-name( fadeInRightExitAlt );
+		@include animation-timing-function( $easeIn );
+	}
+
+	.animFadeInZoom { @include animation-name( fadeInZoom ); }
+	.is-exiting .animFadeInZoom {
+		@include animation-name( fadeInZoomExit );
+		@include animation-timing-function( $easeIn );
+	}
+
+// </editor-fold>
+
+/* -- <editor-fold desc="Global"> ---------------------------------------------- */
+
+	html{ overflow: hidden; }
+
+	body {
+		background: $background;
+		color: $foreground;
+		font-family: "Open Sans", sans-serif;
+		font-size: 100%;
+		font-weight: 400;
+		line-height: 1.2;
+	}
+
+	i:not(.fa) {
+		color: $highlight;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.quote {
+		display: block;
+		padding: 16px 32px;
+		font-style: italic;
+		opacity: 0.75;
+	}
+
+	.quote pre {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.invisible {
+		display: none;
+	}
+
+	h1#error-title {
+		line-height: 1.5em;
+	}
+
+	hr.separator {
+		border:none;
+	}
+
+	.dummy {
+		clear: both;
+	}
+
+	.code-description {
+		display: block;
+		font-size: 10pt;
+		font-style: italic;
+		line-height: 1.2;
+		color: darken( $foreground, 15% );
+		background: darken( $main, 15% );
+		padding: 4px 16px;
+	}
+
+// </editor-fold>
+
+/* -- <editor-fold desc="Components"> ------------------------------------------ */
+
+	/* -- <editor-fold desc="OnOffSwitch"> -- https://proto.io/freebies/onoff/ */
+
+		.onoffswitch {
+			$onoffswitch-base: lighten( $background, 20% );
+		    $onoffswitch-border: mix( $onoffswitch-base, complement( $onoffswitch-base ) );
+		    $onoffswitch-toggleon: complement( $onoffswitch-base );
+		    $onoffswitch-toggleoff: $onoffswitch-base;
+		    $onoffswitch-bgon: darken( $onoffswitch-toggleon, 8% );
+		    $onoffswitch-bgoff: darken( $onoffswitch-toggleoff, 8% );
+
+		    position: relative; width: 96px;
+		    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+
+		    .onoffswitch-checkbox {
+			    display: none;
+			}
+			.onoffswitch-label {
+			    display: block; overflow: hidden; cursor: pointer;
+			    border: 2px solid $onoffswitch-border; border-radius: 0px;
+
+				.onoffswitch-inner {
+				    display: block; width: 200%; margin-left: calc( -100% + 3px );
+				    transition: margin 0.3s cubic-bezier(0.415, 0.375, 0.100, 0.975) 0s;
+				}
+				.onoffswitch-inner:before, .onoffswitch-inner:after {
+				    display: block; float: left; width: 50%; height: 32px; padding: 0; line-height: 28px;
+				    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+				    box-sizing: border-box;
+				    border: 2px solid transparent;
+				    background-clip: padding-box;
+				}
+				.onoffswitch-inner:before {
+				    content: "Yes";
+				    text-align: left;
+				    padding-left: 10px;
+				    background-color: $onoffswitch-bgon; color: #FFFFFF;
+				}
+				.onoffswitch-inner:after {
+				    content: "No";
+				    padding-right: 10px;
+				    background-color: $onoffswitch-bgoff; color: #FFFFFF;
+				    text-align: right;
+				}
+				.onoffswitch-switch {
+				    display: block; width: 15px; margin: 0px;
+				    background: $onoffswitch-toggleoff;
+				    position: absolute; top: 0; bottom: 0;
+				    right: 77px;
+				    transition: all 0.3s cubic-bezier(0.415, 0.375, 0.100, 0.975) 0s;
+				}
+			}
+
+			.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+			    margin-left: 0;
+			}
+			.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+			    right: 0px;
+			    background-color: $onoffswitch-toggleon;
+			}
+		}
+
+	// </editor-fold>
+
+	/* <editor-fold desc="Textfields"> */
+
+		.text {
+			background: darken( $background, 8% );
+			border: 1px solid lighten( $background, 10% );
+			border-top: 2px solid darken( $main, 5% );
+			border-bottom: 1px solid lighten( $main, 10% );
+			border-radius: 6px;
+			padding: 8px 24px;
+			color: $foreground;
+			font-family: "Open Sans", sans-serif;
+
+			&:focus {
+				outline: none;
+				@include box-shadow( inset 0 0 8px complement( lighten( $main, 5% ) ) );
+			}
+
+			&::-webkit-input-placeholder { color: darken( $main, 5% ); font-style: italic; }
+			&:-moz-input-placeholder { color: darken( $main, 5% ); font-style: italic; }
+			&::-moz-input-placeholder { color: darken( $main, 5% ); font-style: italic; }
+			&::-ms-input-placeholder { color: darken( $main, 5% ); font-style: italic; }
+		}
+
+	// </editor-fold>
+
+	/* <editor-fold desc="Buttons"> */
+
+		.button {
+			@include linear-gradient-anim( lighten( $base-color, 5% ), darken( $base-color, 5% ), darken( $base-color, 15% ) );
+			background-size: 100% 200%;
+			background-position: top;
+			color: $foreground;
+			padding: 4px 16px;
+			font-family: "Open Sans", sans-serif;
+			border: 1px solid $shadow;
+			border-top: 1px solid lighten( $base-color, 10% );
+			border-bottom: 1px solid darken( $base-color, 10% );
+			cursor: pointer;
+
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+
+			$values: background-position 120ms, box-shadow 120ms;
+			@include transition( $values );
+
+			&:focus { outline: none}
+			&:hover {
+				background-position: top;
+				@include box-shadow( inset 0 0 4px fade-out( $foreground, 0.5 ) );
+			}
+			&:active {
+				background-position: bottom;
+				@include box-shadow( inset 0 0 4px $shadow );
+			}
+
+			&.primary {
+				@include linear-gradient-anim(
+					lighten( complement( $base-color ), 5% ),
+					darken( complement( $base-color ), 5% ),
+					darken( complement( $base-color ), 15% )
+				);
+				background-size: 100% 200%;
+				background-position: top;
+			}
+			&.primary:hover { background-position: top; @include box-shadow( inset 0 0 4px fade-out( complement( $foreground ), 0.5 ) ); }
+			&.primary:active { background-position: bottom; @include box-shadow( inset 0 0 4px complement( $shadow ) ); }
+
+			&.alt {
+				@include linear-gradient-anim( #AAA, #777, #333 );
+				background-size: 100% 200%;
+				background-position: top;
+			}
+			&.alt:hover { background-position: top; @include box-shadow( inset 0 0 4px #FFF ); }
+			&.alt:active { background-position: bottom; @include box-shadow( inset 0 0 4px #111 ); }
+		}
+
+	// </editor-fold>
+
+	/* <editor-fold desc="Messages"> */
+
+		.message {
+			display: inline-block;
+			position: relative;
+			left: 50%;
+			top: 50%;
+			border: 1px solid darken( $foreground, 35% );
+
+			@include transform( translate( -50%,-50% ) );
+			@include box-shadow( 4px 4px 24px 1px rgba( 0,0,0,0.7 ) );
+
+			&:not(:first-child) {
+				margin-top: 32px;
+			}
+
+			.message-header {
+				background: url("css/asfalt-dark.png") $main;
+				padding: 16px;
+				font-weight: 700,bold;
+				font-size: 18pt;
+				border-bottom: 1px solid darken( $foreground, 35% );
+
+				$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+				@include text-shadow( $values );
+
+				&[data-control] {
+					position: relative;
+					cursor: pointer;
+					@include user-select( none );
+				}
+				&[data-control]:hover::after {
+					content: ' ';
+					position: absolute;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background: rgba( 255,255,255,0.05 );
+				}
+
+				.message-header-toggle {
+					display: inline-block;
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					width:32px;
+					height:32px;
+					border-radius: 16px;
+					background: $gradient1-2;
+					color: $foreground;
+					cursor: pointer;
+					@include transition( background 250ms );
+				}
+
+				.message-header-toggle::after {
+					content: '-';
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 32px;
+					height: 32px;
+					text-align:center;
+					line-height: 32px;
+				}
+
+				.message-header-toggle:hover {
+					background: $gradient1-1;
+					@include transition( background 250ms );
+				}
+
+				.message-header-toggle:active {
+					background: $gradient1-3;
+					@include transition( background 0s );
+				}
+			}
+
+			.message-body {
+				background: darken( $main, 8% );
+				padding: 16px 48px;
+				line-height: 1.5em;
+
+				a {
+					float: right;
+				}
+
+				.indexList a {
+					float: none;
+					color: $highlight;
+				}
+			}
+		}
+
+		.closableMessage {
+			@extend .message;
+			.message-body {
+				max-height: 0;
+				padding: 0 48px;
+				overflow: hidden;
+				&.open { padding: 16px 48px; max-height: 100vh; }
+
+				$values: max-height 250ms, padding 250ms;
+				@include transition( $values );
+			}
+		}
+
+	// </editor-fold>
+
+// </editor-fold>
+
+/* -- <editor-fold desc="Login"> ----------------------------------------------- */
+
+	#login,
+	#register {
+		position: relative;
+		left: 500%;
+		top: 50%;
+		width: 90%;
+
+		@include transform( translate( -50%,-50% ) );
+
+		#message {
+			position: absolute;
+			left: 50%;
+			top: -96px;
+			width: 120%;
+			padding: 16px;
+			border-radius: 16px;
+			line-height: 1.8em;
+			background: darken( $background, 5% );
+			@include transform( translate( -50%,-50% ) );
+		}
+
+		table {
+			width: 100%;
+
+			tr {
+				td {
+					padding-bottom: 8px;
+					text-align: right;
+
+					.onoffswitch {
+						float:right; margin-right:-8px
+					}
+				}
+
+				td:first-child {
+					width: 160px;
+				}
+
+				&:last-child {
+					td {
+						padding-top: 32px;
+						padding-bottom: 0;
+
+						&:last-child {
+							position: absolute;
+							right: 1px;
+							width: 100%;
+
+							& .button + .button { margin-left: 8px; }
+							& .button + a { margin-left: 8px; }
+							& a + .button { margin-left: 8px; }
+
+							&::before {
+								position: absolute;
+								top: 12px;
+								left: 0;
+								width: 100%;
+								content: ' ';
+								border-top: 1px solid lighten( $main, 10% );
+							}
+						}
+					}
+				}
+			}
+		}
+
+		label {
+			position: relative;
+			right: 12px;
+			top: 10px;
+
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+		}
+
+		.onoffswitch-label {
+			right: 9px;
+			top: 0;
+		}
+
+		.text {
+			width: 100%;
+		}
+
+		.register {
+			position: fixed;
+			right: 8px;
+			bottom: 8px;
+		}
+	}
+
+// </editor-fold>
+
+// -- <editor-fold desc="Login"> --------------------------------------------------
+
+	#userpanel {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 256px;
+		background: url("css/asfalt-dark.png") $main;
+		@include box-shadow( 4px 4px 8px rgba( 0,0,0,0.5 ) );
+
+		.gravatar {
+			position: absolute;
+			top: 8px;
+			left: 8px;
+			width: 48px;
+			height: 48px;
+			background: $shadow;
+
+			@include box-shadow( 2px 2px 4px rgba( 0,0,0,0.5 ) );
+		}
+
+		.username {
+			position: absolute;
+			top: 10px;
+			left: 64px;
+			color: darken( $foreground, 10% );
+			font-size: 14pt;
+
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+		}
+
+		.usergroup {
+			position: absolute;
+			top: 36px;
+			left: 64px;
+			color: lighten( $main, 30% );
+			font-size: 12pt;
+			font-style: italic;
+		}
+
+		.panelitemgroup {
+			position: absolute;
+			left: 26px;
+			top: 96px;
+
+			.panelitem {
+				position: relative;
+				width: 96px;
+				height: 96px;
+				border-radius: 8px;
+				margin-top: 12px;
+				float: left;
+				cursor: pointer;
+				@include user-select( none );
+
+				@include linear-gradient-anim( $gradient1-1,$gradient1-2,$gradient1-3 );
+				background-size: 100% 200%;
+				background-position: bottom;
+				@include transition( background-position 120ms );
+				&:hover { background-position: top; }
+				&:active { background-position: bottom; }
+
+				@include box-shadow( 0 0 4px 1px rgba( 0,0,0,0.2 ) );
+
+				&:nth-child(odd) { margin-right: 12px; }
+				&:nth-child(1), &:nth-child(2) { margin-top: 0; }
+
+				i {
+					position: absolute;
+					left: 16px;
+					top: 4px;
+					width: 64px;
+					height: 64px;
+					text-align: center;
+					line-height: 64px;
+					//font-size: 24pt;
+					color: $foreground;
+					background: darken( $main, 8% );
+					border-radius: 8px;
+				}
+
+				.itemname {
+					position: absolute;
+					left: 0;
+					bottom: 4px;
+					right: 0;
+					color: $foreground;
+					text-align:center;
+					font-size: 10pt;
+					@include text-shadow( 0 1px 2px rgba( 0,0,0,0.5 ) );
+				}
+			}
+		}
+	}
+
+	#member-page {
+		position: absolute;
+		left: 256px;
+		top: 0;
+		bottom: 0;
+		min-width: 512px;
+		width: calc( 100% - 256px );
+		padding: 64px;
+		overflow: auto;
+
+		.page-header {
+			font-size: 24pt;
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+		}
+
+		.page-title {
+			font-size: 24pt;
+			font-weight: 700;
+		}
+
+		.message {
+			position: default;
+			left: 0;
+			top: 0;
+			width: 100%;
+			@include transform( none );
+		}
+
+		.lesson {
+			padding: 16px;
+			cursor: pointer;
+			border-radius: 16px;
+			@include user-select( none );
+
+			&:hover { background: lighten( $main,5% ); @include box-shadow( 0 0 16px 4px lighten( $main, 5% ); }
+
+			.lesson-icon {
+				left: 0;
+				top: 0;
+				width: 128px;
+				height: 128px;
+				float: left;
+			}
+
+			.lesson-info {
+				position: relative;
+				float: left;
+				margin-left: 16px;
+
+				.lesson-title {
+					font-size: 18pt;
+					font-weight: 700;
+				}
+
+				.lesson-description {
+					margin-top: 24px;
+					font-size: 14pt;
+				}
+			}
+		}
+
+		table.styled {
+			width: calc( 100% - 64px );
+			border: 1px solid darken( $foreground, 30% );
+			background: $main;
+			margin: 32px;
+			margin-bottom: 64px;
+			font-size: 16pt;
+			tr:nth-child(odd) {
+				background: rgba( 0,0,0,0.30 );
+			}
+			caption {
+				text-align: left;
+				font-weight: 700;
+				font-size: 16pt;
+			}
+			tr {
+				td:first-child { padding-right: 2%; width: 30%; text-align: right; }
+				td:last-child { width: 70%; }
+				td {
+					height: 48px;
+					line-height: 48px;
+				}
+
+				&:hover {
+					background: rgba( 255, 255, 255, 0.05 );
+				}
+			}
+		}
+	}
+
+// </editor-fold>
