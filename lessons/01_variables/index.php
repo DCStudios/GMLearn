@@ -89,28 +89,28 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<div id="instance-var" class="message">
 			<h1 class="message-header">Instance Variables</h1>
 			<p class="message-body">
-				The first type is the one you probably will use the most, <i>instance variables</i>.  
+				The first type is the one you probably will use the most, <i>instance variables</i>.
 				Those are variables like the <i>x</i> position, the <i>image_index</i>,
-				the <i>sprite_index</i>, the <i>speed</i>, etc.  
-				They are variables that are available <i>anywhere</i> in the <i>instance itself</i> ( any events ).  
+				the <i>sprite_index</i>, the <i>speed</i>, etc.
+				They are variables that are available <i>anywhere</i> in the <i>instance itself</i> ( any events ).
 				You can also access those variables via the '<i>.</i>' ( dot ) operator.<br>
 				for example:
 			</p>
 			<pre class="line-numbers"><code class="language-clike">player.x</code></pre>
 			<span class="code-description">Accessing the <i>instance</i> variable <i>x</i> from the object player.</span>
 			<p class="message-body">
-				The code above will <i>access</i> the 'x' <i>instance variable</i> from the <i>object player</i>. 
+				The code above will <i>access</i> the 'x' <i>instance variable</i> from the <i>object player</i>.
 				You can create your own <i>instance variable</i> by simply using the <i>assignation operator</i> ('=').
 			</p>
 			<pre class="line-numbers"><code class="language-clike">test = 5;</code></pre>
 			<span class="code-description">Assigning the <i>instance</i> variable <i>test</i> the <i>value</i> 5.</span>
 			<p class="message-body">
-				This creates the <i>instance variable</i> "test", and <i>stores</i> the value 5 in it. 
-				You can use <i>any variable name you want</i>, as long as they aren't an 
+				This creates the <i>instance variable</i> "test", and <i>stores</i> the value 5 in it.
+				You can use <i>any variable name you want</i>, as long as they aren't an
 				<i>already existing variable</i>'s name.
 				You can't create a new 'x' variable, because that variable <i>already exists</i>.
 				On the other side, you can create a variable with <i>the same name</i> as one that is found
@@ -138,7 +138,7 @@
 			</p>
 			<pre class="line-numbers"><code class="language-clike">// You create local variable by
 // adding 'var' in front of them
-var a;  
+var a;
 a = 5;
 if( a == 5 ) {
     // We define another var,
@@ -147,7 +147,7 @@ if( a == 5 ) {
 
     // I can use a, because the scope
     // of 'b' is inside the scope of 'a'
-    b = a; 
+    b = a;
 }
 // This is an error, b doesn't exists anymore,
 // because we aren't inside it's scope!
@@ -268,9 +268,18 @@ var state = State.Running;</code></pre>
 			</p>
 		</div>
 
+		<div id="conclusion" class="message">
+			<h1 class="message-header">Exercices</h1>
+			<input id="e1" type="button" class="button fullWidth spacy" value="Exercice 1 - Do you know your variables? [ 5 xp ]">
+		</div>
+
 		<script>
 			$("#member-page-container code").each( function( i,e ) {
 				Prism.highlightElement( e );
+			});
+
+			$("#e1").on("click",()=>{
+				$("#member-page-container").data("transition").Goto("lessons/01_variables/exercice_1.php");
 			});
 		</script>
 
