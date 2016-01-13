@@ -9,7 +9,9 @@
 	require_once "pages/builders/messagebox.builder.php";
 
 	if( isset( $_SESSION["loggedIn"] ) ) {
+		$oneWeek = 604800;
 		session_unset();
+		setcookie( "remember", false, time()+$oneWeek, "/" );
 	}
 	else {
 		header( "Location: login.php" );

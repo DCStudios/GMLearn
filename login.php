@@ -12,10 +12,23 @@
 		header( "Location: member.php" );
 	}
 
+	// Check if user wanted to be remembered
+	if( isset( $_COOKIE["remember"] ) ) {
+		if( $_COOKIE["remember"] ) {
+			$_SESSION["userid"] = $_COOKIE["userid"];
+			$_SESSION["user"] = $_COOKIE["username"];
+			$_SESSION["email"] = $_COOKIE["email"];
+			$_SESSION["group"] = $_COOKIE["group"];
+			$_SESSION["theme"] = $_COOKIE["theme"];
+			$_SESSION["loggedIn"] = true;
+			header( "Location: member.php?theme=".$_COOKIE["theme"] );
+		}
+	}
+
 	// Check if trying to login
 	$username = filter_input( INPUT_POST, "username" );
 	$password = filter_input( INPUT_POST, "password" );
-	$rem = "";
+	$rem = 		filter_input( INPUT_POST, "remember" );
 
 	if( $username !== NULL && $password !== NULL ) {
 
@@ -40,6 +53,18 @@
 			$_SESSION["group"] = $result["group"];
 			$_SESSION["theme"] = $result["theme"];
 			$_SESSION["loggedIn"] = true;
+
+			// Save cookie for remembering
+			if( $rem !== FALSE && $rem !== NULL ) {
+				$oneWeek = 604800;
+				setcookie( "remember", true, time()+$oneWeek, "/" );
+				setcookie( "userid", $result["userid"], time()+$oneWeek, "/" );
+				setcookie( "username", $result["username"], time()+$oneWeek, "/" );
+				setcookie( "email", $result["email"], time()+$oneWeek, "/" );
+				setcookie( "group", $result["group"], time()+$oneWeek, "/" );
+				setcookie( "theme", $result["theme"], time()+$oneWeek, "/" );
+			}
+
 			header( "Location: member.php?theme=".$result["theme"] );
 		}
 	}
