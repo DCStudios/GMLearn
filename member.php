@@ -111,6 +111,11 @@
 		$("#member-page-container").data("transition").Goto("pages/member/lessons.php");
 	});
 
+	$("#btnTutorials").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/tutorials.php");
+	});
+
 	$("#btnAchievements").on("click",function(e) {
 		e.preventDefault();
 		$("#member-page-container").data("transition").Goto("pages/member/achievements.php");

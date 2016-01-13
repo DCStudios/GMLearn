@@ -8,16 +8,21 @@
 	//$scss -> setFormatter( "scss_formatter_compressed" );
 	$css = $scss -> compile( file_get_contents( "$CWD/scss/pages/member_lessons.scss" ) );
 
-	$statement = $sql->prepare("
-		SELECT name,description,url,icon FROM lessons
-		WHERE name IN (
-		SELECT lessons.name FROM lessons
-		JOIN users
-		WHERE
-			users.username = :user AND
-			users.xp >= lessons.required
-		);
-	");
+	if( $_SESSION["group"] != "member" ) {
+		$statement = $sql->prepare("
+			SELECT name,description,url,icon FROM lessons
+			WHERE name IN (
+			SELECT lessons.name FROM lessons
+			JOIN users
+			WHERE
+				users.username = :user AND
+				users.xp >= lessons.required
+			);
+		");
+	}
+	else {
+		$statement = $sql->prepare("SELECT name,description,url,icon FROM lessons;");
+	}
 	$statement -> bindValue(":user",$_SESSION["user"] );
 	$result = $statement -> execute();
 ?>
