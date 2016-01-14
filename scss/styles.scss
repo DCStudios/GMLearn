@@ -569,11 +569,28 @@
 					float: right;
 				}
 
-				.indexList a {
-					float: none;
-					color: $highlight;
+				.indexList {
+					a {
+						float: none;
+						color: $highlight;
+					}
+
+					&.choices input[type="radio"] {
+						margin-left: 16px;
+						& + label {
+							position:relative;
+							left: 4px;
+							top: 4px;
+						}
+					}
 				}
 			}
+
+			.question {
+				text-decoration: underline;
+				font-size: 16pt;
+			}
+
 		}
 
 		.closableMessage {
@@ -587,6 +604,53 @@
 				$values: max-height 250ms, padding 250ms;
 				@include transition( $values );
 			}
+		}
+
+	// </editor-fold>
+
+	/* <editor-fold desc="Modals"> */
+
+		.modal-overlay {
+			background: transparentize( $base-color, 0.3 );
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			visibility: hidden;
+			z-index: 1000;
+			opacity: 0;
+
+			$values: all 250ms;
+			@include transition( $values );
+		}
+
+		.modal {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			width: 50%;
+			min-width: 320px;
+			max-width: 640px;
+			height: auto;
+			z-index: 2000;
+			opacity: 0;
+			visibility: hidden;
+			backface-visibility: hidden;
+
+			&.show {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			&.show ~ .modal-overlay {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			@include transform( translate( -50%, -50% ) );
+			$values: all 250ms;
+			@include transition( $values );
 		}
 
 	// </editor-fold>

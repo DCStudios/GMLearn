@@ -20,6 +20,7 @@
 			$_SESSION["email"] = $_COOKIE["email"];
 			$_SESSION["group"] = $_COOKIE["group"];
 			$_SESSION["theme"] = $_COOKIE["theme"];
+			$_SESSION["xp"] = $_COOKIE["xp"];
 			$_SESSION["loggedIn"] = true;
 			header( "Location: member.php?theme=".$_COOKIE["theme"] );
 		}
@@ -52,6 +53,7 @@
 			$_SESSION["email"] = $result["email"];
 			$_SESSION["group"] = $result["group"];
 			$_SESSION["theme"] = $result["theme"];
+			$_SESSION["xp"] = $result["xp"];
 			$_SESSION["loggedIn"] = true;
 
 			// Save cookie for remembering
@@ -63,6 +65,7 @@
 				setcookie( "email", $result["email"], time()+$oneWeek, "/" );
 				setcookie( "group", $result["group"], time()+$oneWeek, "/" );
 				setcookie( "theme", $result["theme"], time()+$oneWeek, "/" );
+				setcookie( "xp", $result["xp"], time()+$oneWeek, "/" );
 			}
 
 			header( "Location: member.php?theme=".$result["theme"] );
