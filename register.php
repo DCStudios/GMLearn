@@ -29,7 +29,7 @@
 							></td>
 					</tr><tr>
 						<td><label for="register_password1">Password:</label></td>
-						<td><input type="password" id="register_password1" name="password" class="text" placeholder='' required="required" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_| |[^\w\s])).+[^\s]{5,}$"></td>
+						<td><input type="password" id="register_password1" name="password" class="text" placeholder='' required="required" pattern="^(?=.*[a-z])(?=.*\d).+[^\s]{5,}$"></td>
 					</tr><tr>
 						<td><label for="register_password2">Confirm Password:</label></td>
 						<td><input type="password" id="register_password2" class="text" placeholder='' required="required"></td>
@@ -71,7 +71,9 @@
 					event.stopPropagation();
 					event.preventDefault();
 					$("#message").fadeOut(400, function(){
-						$("#message").html("Your password should contain at least one letter, one capital letter, one number and one symbol and be at least 6 characters long." ).fadeIn(400);
+						$("#message").html(
+							"Your password should be at least 6 characters long and contain both letters and numbers."
+						).fadeIn(400);
 					});
 				}, true);
 
