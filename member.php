@@ -74,12 +74,30 @@
 	<span class="username"><?php echo $_SESSION["user"];?></span>
 	<span class="usergroup"><?php echo $_SESSION["group"]; ?></span>
 	<ul class="panelitemgroup">
-		<li id="btnDashboard" class="panelitem"><a href="#"><span class='itemname'>Dashboard</span><i class="fa fa-bar-chart-o fa-2x"></i></a></li>
-		<li id="btnLessons" class="panelitem"><a href="#"><span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i></a></li>
-		<li id="btnAchievements" class="panelitem"><a href="#"><span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i></a></li>
-		<li id="btnChat" class="panelitem"><a href="#"><span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i></a></li>
-		<li id="btnPreferences" class="panelitem"><a href="#"><span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i></a></li>
-		<li id="btnLogout" class="panelitem"><a href="logout.php"><span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i></a></li>
+		<li id="btnDashboard" class="panelitem"><a href="#">
+			<span class='itemname'>Dashboard</span><i class="fa fa-bar-chart-o fa-2x"></i>
+		</a></li>
+		<li id="btnAchievements" class="panelitem"><a href="#">
+			<span class='itemname'>Achievements</span><i class="fa fa-trophy fa-2x"></i>
+		</a></li>
+		<li id="btnLessons" class="panelitem"><a href="#">
+			<span class='itemname'>Lessons</span><i class="fa fa-graduation-cap fa-2x"></i>
+		</a></li>
+		<li id="btnTutorials" class="panelitem"><a href="#">
+			<span class='itemname'>Tutorials</span><i class="fa fa-graduation-cap fa-2x"></i>
+		</a></li>
+		<li id="btnChat" class="panelitem"><a href="#">
+			<span class='itemname'>Chat</span><i class="fa fa-comment fa-2x"></i>
+		</a></li>
+		<li id="btnRequests" class="panelitem"><a href="#">
+			<span class='itemname'>Requests</span><i class="fa fa-comment fa-2x"></i>
+		</a></li>
+		<li id="btnPreferences" class="panelitem"><a href="#">
+			<span class='itemname'>Preferences</span><i class="fa fa-wrench fa-2x"></i>
+		</a></li>
+		<li id="btnLogout" class="panelitem"><a href="logout.php">
+			<span class='itemname'>Logout</span><i class="fa fa-sign-out fa-2x"></i>
+		</a></li>
 	</ul>
 </div>
 <div class="transition-evalme invisible">
@@ -91,6 +109,11 @@
 	$("#btnLessons").on("click",function(e) {
 		e.preventDefault();
 		$("#member-page-container").data("transition").Goto("pages/member/lessons.php");
+	});
+
+	$("#btnTutorials").on("click",function(e) {
+		e.preventDefault();
+		$("#member-page-container").data("transition").Goto("pages/member/tutorials.php");
 	});
 
 	$("#btnAchievements").on("click",function(e) {
