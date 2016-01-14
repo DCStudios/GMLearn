@@ -51,6 +51,18 @@
 ?>
 			<div id="anim-wrapper" class="transition animfadeInRight">
 
+				<div class="message">
+					<h1 class="message-header">GMLearn</h1>
+					<p class="message-body">
+						 Currently in development, this website will in the future offer you
+						 to follow lessons, complete lessons in a fully working editor and will
+						 correct you LIVE as you write code.
+					</p>
+					<p class="message-body">
+						 Based on a point system, it's like playing a game! The more points you have,
+						 the more advanced lessons you unlock! Learning couldn't get any more fun!
+					</p>
+				</div>
 				<form id="login" action="login.php" method="POST">
 
 					<!-- Fake fields to disable autofill in chromium -->
