@@ -1,6 +1,7 @@
 <?php
 
-	require_once "pages/builders/Builder.php";
+	if( !isset( $CWD ) ) $CWD = "../..";
+	require_once "$CWD/pages/builders/Builder.php";
 
 
 	$build_bottom = function( $extraContent="", $introLength=800, $exitLength=800 ) { ?>

@@ -4,6 +4,7 @@
 	require_once "$CWD/php/sqlite.php";
 	require_once "$CWD/php/reload.php";
 	require_once "$CWD/pages/builders/mobileHeader.builder.php";
+	require_once "$CWD/pages/builders/bottom.builder.php";
 
 	// Check if already logged in
 	$loggedIn = isset( $_SESSION["loggedIn"] );
@@ -58,16 +59,16 @@
 
 	<!-- Form in a table for nice alignement -->
 	<table>
-		<tr>
+		<tr class="move">
 			<td><label for="login_username">Username:</label></td>
 			<td><input type="text" id="login_username" name="username" class="text" placeholder='Username' required="required"
 				value="<?php echo ( $user!==FALSE&&$user!==null?$user:""); ?>"
 			></td>
-		</tr><tr>
+		</tr><tr class="move">
 			<td><label for="login_password">Password:</label></td>
 			<td><input type="password" id="login_password" name="password" class="text" placeholder='' required="required"></td>
 		</tr>
-		<tr>
+		<tr class="move">
 			<td><label for="register_remember">Remember me:</label></td>
 			<td>
 				<div class="onoffswitch">
@@ -88,3 +89,7 @@
 	</table>
 
 </form>
+
+<?php
+	$builder->buildBottom();
+?>
