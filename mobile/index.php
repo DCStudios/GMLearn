@@ -15,10 +15,10 @@
 	require_once "$CWD/php/reload.php";
 
 	if( isset( $_SESSION["loggedIn"] ) ) {
-		header( "Location: mobile/member.php" );
+		header( "Location: member.php" );
 	}
 	else {
-		header( "Location: mobile/login.php" );
+		header( "Location: login.php" );
 	}
 
 ?>
