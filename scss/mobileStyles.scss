@@ -707,7 +707,129 @@
 		right: 0;
 		left: 0;
 		height: 48px;
-		background: $shadow;
+		background: $main;
+
+		.gravatar { @include box-shadow( 2px 2px 4px rgba( 0,0,0,0.5 ) ); }
+
+		.username {
+			position: absolute;
+			top: 4px;
+			left: 54px;
+			color: darken( $foreground, 10% );
+			font-size: 14pt;
+
+			$values: 0 1px #888, 0 2px 2px #111, 0 2px 8px #111;
+			@include text-shadow( $values );
+		}
+
+		.usergroup {
+			position: absolute;
+			top: 28px;
+			left: 54px;
+			color: lighten( $main, 30% );
+			font-size: 12pt;
+			font-style: italic;
+		}
+
+		#menu-bar-trigger {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			height: 40px;
+			i {
+				line-height: 32px;
+				font-size: 16pt;
+			}
+		}
+
+		#menu-bar-menu {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			opacity: 0;
+			visibility: hidden;
+			z-index: 1000;
+			overflow: hidden;
+			overflow-y: auto;
+			background: transparentize($background, 0.3 );
+
+			@include transition( all 250ms );
+
+			&.visible {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			#menu-bar-menu-close {
+				height: 40px;
+				position: absolute;
+				top: 4px;
+				right: 4px;
+				i {
+					line-height: 32px;
+					font-size: 16pt;
+				}
+			}
+
+			.menu-item-group {
+				margin-top: 52px;
+				.menu-item {
+					position: relative;
+					width: 30%;
+					height: 96px;
+					border-radius: 8px;
+					margin: 2%;
+					float: left;
+					cursor: pointer;
+					@include user-select( none );
+
+					@include linear-gradient-anim( $gradient1-1,$gradient1-2,$gradient1-3 );
+					background-size: 100% 200%;
+					background-position: bottom;
+					@include transition( background-position 120ms );
+
+					&:nth-child(odd) {
+						margin-left: 15%;
+						margin-right: 5%;
+					}
+					&:nth-child(even) {
+						margin-left: 5%;
+						margin-right: 15%;
+					}
+					&:hover { background-position: top; }
+					&:active { background-position: bottom; }
+
+					@include box-shadow( 0 0 4px 1px rgba( 0,0,0,0.2 ) );
+
+					i {
+						position: absolute;
+						left: 16px;
+						right: 16px;
+						top: 4px;
+						height: 64px;
+						text-align: center;
+						line-height: 64px;
+						//font-size: 24pt;
+						color: $foreground;
+						background: darken( $main, 8% );
+						border-radius: 8px;
+					}
+
+					.itemname {
+						position: absolute;
+						left: 0;
+						bottom: 4px;
+						right: 0;
+						color: $foreground;
+						text-align:center;
+						font-size: 10pt;
+						@include text-shadow( 0 1px 2px rgba( 0,0,0,0.5 ) );
+					}
+				}
+			}
+		}
 	}
 
 	#member-page-container {
